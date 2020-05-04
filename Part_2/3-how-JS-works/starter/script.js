@@ -105,11 +105,11 @@ var myObject = {
         console.log(this);          // refers to object that called the method
         console.log(2020 - this.yearOfBirth);
 
-        function innerFunction() {
-            console.log(this);      // window object
-            // regular function calls happend that the window object displays
-        }
-        innerFunction();
+        // function innerFunction() {
+        //     console.log(this);      // window object
+        //     // regular function calls happend that the window object displays
+        // }
+        // innerFunction();
     }
 };
 
@@ -118,13 +118,12 @@ myObject.calculateAge();
 
 var newObject = {
     name: 'Someone',
-    yearOfBirth: 23,
+    yearOfBirth: 23
+    // we can copy the method from myObject to calc age
+    // but we can borrow this method
 };
 
-
-
-
-
-
-
-
+newObject.calculateAge = myObject.calculateAge;
+newObject.calculateAge();
+// as the result we'll see the same result as the older object
+// but with new value
