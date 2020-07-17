@@ -18,6 +18,10 @@ function isUniform(arr) {
     return true;
 }
 
+isUniform([1, 1, 1, 1]);
+isUniform(['a', 'b', 'p']);
+isUniform(['b', 'b', 'b']);
+
 // sum of array
 function sumArray(arr) {
     var total = 0;
@@ -26,6 +30,8 @@ function sumArray(arr) {
     });
     return total;
 }
+
+sumArray([10, 3, 10, 4]);
 
 // max of array
 function max(arr) {
@@ -37,3 +43,5 @@ function max(arr) {
     }
     return max;
 }
+
+max([10, 3, 10, 4]);

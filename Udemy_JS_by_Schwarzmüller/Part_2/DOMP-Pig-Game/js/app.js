@@ -87,8 +87,17 @@ function() {
         // 2. Update the UI
         document.getElementById('score-' + activePlayer).textContent = scores[activePlayer];
 
+        // Set the final score
+        var inputScore = document.querySelector('.final-score').value;
+        var endScore
+        if (!inputScore && !isNaN(inputScore)) {
+            endScore = 100;
+        } else {
+            endScore = inputScore;
+        }
+
         // 3. Check if player won the game
-        if (scores[activePlayer] >= 100) {
+        if (scores[activePlayer] >= endScore) {
             document.getElementById('name-' + activePlayer).textContent = 'Winner!';
             document.querySelector('.dice').style.display = 'none';
             document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
