@@ -29,7 +29,7 @@
 </head>
 	<body>
 		<h1>To-Do List</h1>
-	    <ol>
+	    <ol id="home_list">
 	        <li>Wash Laundry</li>
 	        <li>Clean Silver</li>
 	        <li>Write Letters</li>
@@ -37,5 +37,14 @@
 	        <li>Retrieve Mail</li>
 	        <li>Prepare Dinner</li>
 	    </ol>
+    <script type="text/javascript">
+    	var todoList = document.getElementById("home_list")
+		console.log("Start List Count: " + todoList.children.length)
+		var newTodo = document.createElement("li")
+		newTodo.innerText = "Finished Actiity 2.01"
+		todoList.appendChild(newTodo)
+		todoList.lastChild.style.color = "red"
+		console.log("End List Count: " + todoList.children.length)
+    </script>
 	</body>
 </html>
