@@ -1,0 +1,20 @@
+1. You will create the HTML file yourself and paste in the preceding boilerplate HTML code to get started. This file conforms to a standard HTML document targeting the HTML5 specification. It is structured with a <head> tag and a <body> tag, and nested within the <body> tag exists the visual elements and the data a user would be able to see within their web browser. Additionally, within this file, you will see a set of CSS style rules within the <style> tags, which provide visual HTML elements with some additional specific colors, fonts, and sizes. The CSS refers to additional stylistic font information being loaded from remote Google Fonts (https://fonts.google.com/) services.
+
+2. Assign an ID to our list in order to identify it via code.
+
+3. Create a new variable and use the ID to address this element directly by the use of the getElementById() method.
+
+4. Create a new HTML list item element.
+
+5. Populate the list item with a data value.
+
+6. Add it to the visual document by appending it to a chosen parent container that
+already exists.
+
+7. Change the color of the existing element.
+
+8. Verify the execution order of our commands by counting the initial number of list items.
+
+9. Then, count the final number of list items after code execution.
+
+10. Refresh the browser view and watch the console.
