@@ -1,0 +1,30 @@
+Express the data type. Note that a function name without parentheses is used:
+>typeof getDiceRoll
+\\Expressed as a function type. It also assures us that there is a function.
+<·function
+
+Express the return value data type. Note that a function name with parentheses is
+used:
+>typeof getDiceRoll()
+\\Function return value is a number. We do not see the actual value.
+<·"number"
+
+Invoke the function using the following code:
+>getDiceRoll()
+\\Your value will be 1 to 6. Repeat a few times.
+<·3
+
+Invoke the function in a math expression:
+> 100 * getDiceRoll()
+\\Your value will be 100 to 600 Repeat a few times.
+<·300
+
+Invoke the function in a comparison expression:
+>getDiceRoll() == 4
+\\You may need to repeat a few times to get a true result.
+<·true
+
+Invoke and supply the argument for the number of dice to roll as 2:
+>getDiceRoll(2)
+\\You will receive values from 2 to 12.
+<·11
