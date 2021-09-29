@@ -1,0 +1,57 @@
+Declare a variable named firstName:
+> var firstName
+\\Value is expressed as undefined
+< undefined
+
+Write the data type of the variable:
+>typeof firstName
+\\Output
+< "undefined"
+
+Assign the string value Albert to the firstName variable:
+>firstName = "Albert"
+\\Output
+< "Albert"
+
+To find out what data type our input is, use the typeof keyword, as shown here:
+>typeof firstName
+\\Output
+< "string"
+
+To find out what value our firstName variable is holding, we simply need to write
+the following code:
+>firstName
+\\Output
+< "Albert"
+
+Declare a variable and assign it to a number expression:
+> var totalLikes = 50
+\\Output. Console may express value when declared but before assigned
+< undefined
+
+Write the value of totalLikes:
+>totalLikes
+\\Output
+< 50
+
+To ascertain the data type, we will once again use typeof, as shown here:
+>typeof totalLikes
+< "number
+
+Here is the code for changing the value held by totalLikes:
+>totalLikes = totalLikes + 1
+\\Output. New value is expressed
+< 51
+
+Compare the value of totalLikes using the following code:
+>totalLikes> 100
+< false
+
+Declare a variable and assign it to a Boolean expression:
+> var isSold = false
+\\Output. Console may express undefined data type when declared but before assigned.
+< undefined
+
+Write the data type, like so:
+>typeof isSold
+< "boolean"
