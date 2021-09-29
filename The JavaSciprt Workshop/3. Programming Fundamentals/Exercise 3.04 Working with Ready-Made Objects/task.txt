@@ -1,0 +1,74 @@
+Display the document object title property:
+>document.title
+\\Output
+<< "JavaScript Data and Expression Practice | Packt Publishing"
+
+Now, display the document object doctype property:
+>document.doctype
+\\Output
+<<!doctype html>
+
+Display the document object lastModified property:
+>document.lastModified
+\\Your output may have a different time and date value.
+< "09/09/2019 21:58:25"
+
+Declare a variable and assign it to the HTMLElement object variable using the
+document object getElementById method:
+> var pageHeadEle = document.getElementById('page-heading')
+\\Console may express undefined data type when declared but before assigned.
+<·undefined
+
+Display the pageHeadEleHTMLElement object:
+>pageHeadEle
+\\Output
+<<div id="page-heading" class="heading-section">
+<h1 class="center-text">JavaScript Data and Expression Practice</h1>
+</div>
+
+Write the pageHeadEle object innerHTML property:
+>pageHeadEle.innerHTML
+\\Output
+<·"
+<h1 class="center-text">JavaScript Data and Expression Practice</h1>
+"
+
+Now, let's look at the JavaScript built-in Math object. Write the Math object PI
+property:
+>Math.PI
+\\Output
+< 3.141592653589793
+
+Invoke the random method for the Math object:
+>Math.random()
+< 0.9857480203668554
+
+Use the Math object's round method:
+>Math.round(10.5)
+<·11
+
+Use the Math object's round method:
+>Math.round(10.4)
+<·10
+
+Use the Math object's ceil method:
+>Math.ceil(10.5)
+<·11
+
+Use the Math object's ceil method:
+>Math.ceil(10.4)
+<·11
+
+Use the Math object's floor method:
+>Math.floor(10.4)
+<·10
+
+Use the Math object's floor method:
+>Math.floor(10.6)
+<·10
+
+This is the expression we use to get a random dice value. The floor method
+argument is an expression, that is, Math.random() * 6. Its result is added to 1:
+>Math.floor(Math.random() * 6) + 1
+\\Output
+< 1
