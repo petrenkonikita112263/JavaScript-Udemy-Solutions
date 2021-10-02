@@ -1,0 +1,16 @@
+In this exercise, we will build a simple game that generates four random game numbers
+from 1 to 21 inclusive. One is the player's score, one is the target score, one is a lucky
+score, and the last is an unlucky score. The player gets a wallet of 20 times the player's
+score. There are five possible outcomes, with each assigning different wins or losses to
+the player's wallet:
+• The player's score matches the lucky score, and the lucky score and the unlucky
+score are different. The wallet is increased by the lucky value plus the player's score
+times 10.
+• The player's score equals the unlucky score, and the lucky score and the unlucky
+score are different. The wallet is reduced to zero.
+• The player's score equals the target score. The wallet is increased by the difference
+between 21 and the target score times 10.
+• The player's score beats the target score. The wallet is increased by the difference
+between the player's score and the target score times 10.
+• The target score beats the player's score. The wallet is decreased by the difference
+between the target score and the player's score times 10.
