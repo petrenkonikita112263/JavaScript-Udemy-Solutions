@@ -1,0 +1,33 @@
+1. Open the for-statement.html document in your web browser.
+
+2. Open the web developer console window using your web browser.
+
+3. Open the for-statement.js document in your code editor, replace all of its content
+with the following code, and then save it:
+for(var i = 1; i<= 5; i++){
+console.log(i);
+}
+
+4. Reload the for-statement.html web page in your web browser with the console
+window open. The following are the results:
+1 2 3 4 5
+
+5. Edit the for-statement.js document using the following bolded lines and then save
+it:
+for(var i = 5; i>= 1; i--){
+console.log(i);
+}
+
+6. Reload the for-statement.html web page in your web browser with the console
+window open. The following are the results:
+5 4 3 2 1
+
+7. Edit the for-statement.js document using the following bolded lines and then save
+it:
+for(var i = 2; i<= 10; i+=2){
+console.log(i);
+}
+
+8. Reload the for-statement.html web page in your web browser with the console
+window open. The following are the results:
+2 4 6 8 10
