@@ -1,0 +1,68 @@
+1. Open the while-statement.html document in your web browser.
+
+2. Open the web developer console window using your web browser.
+
+3. Open the while-statement.js document in your code editor, replace all of its
+content with the following code, and then save it:
+let iterations = 0;
+while (iterations <10){
+console.log("iterations:", iterations);
+iterations ++;
+}
+
+4. Reload the while-statement.html web page in your web browser with the console
+window open.
+The results show the iterations variable increasing from 0 to 9 for 10 iterations:
+iterations: 0
+iterations: 1
+iterations: 2
+iterations: 3
+iterations: 4
+iterations: 5
+iterations: 6
+iterations: 7
+iterations: 8
+iterations: 9
+
+5. Edit the while-statement.js document using the following bolded lines and then
+save it. This adds the line to show a dice roll for each iteration:
+die = Math.floor(Math.random() * 6) + 1;
+console.log("die:", die);
+iterations ++;
+
+6. Reload the while-statement.html web page in your web browser with the console
+window open.
+
+7. You will see a list of 10 dice values. Your values will differ:
+die: 2
+die: 5
+die: 2
+die: 4
+die: 2
+die: 3
+die: 4
+die: 2
+die: 6
+die: 1
+
+8. Edit the while-statement.js document using the following bolded lines and then
+save it.
+This adds an if block to test for an even number of the dice roll. If true, the break
+statement terminates the while loop and the line following it is processed. The two
+lines following the while loop display how many iterations occurred and the value
+of the dice roll for that iteration:
+let die;
+while (iterations <10){
+die = Math.floor(Math.random() * 6) + 1;
+if (die % 2 == 0){
+break;
+}
+iterations ++;
+}
+console.log("Number of iterations: ", iterations + 1);
+console.log("Die value: ", die);
+
+9. Run a few tests by reloading the while-statement.html web page in your web
+browser with the console window open:
+Number of iterations: 1
+Die value: 2
