@@ -1,0 +1,5 @@
+We are going to use the switch statement by simulating a game where the player can
+move their playing pieces using their keyboard. They can move left with the A key,
+right with the S key, up with the W key, and down with the Z key. To simulate a random
+selection of the keys, in either uppercase or lowercase, from the keyNames string, a
+variable will be used.
