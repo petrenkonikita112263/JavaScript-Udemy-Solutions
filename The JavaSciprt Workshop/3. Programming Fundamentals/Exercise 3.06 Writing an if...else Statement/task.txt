@@ -1,0 +1,37 @@
+1. Open the if-else-statements.html document in your web browser.
+
+2. Open the web developer console window using your web browser.
+
+3. Open the if-else-statements.js document in your code editor, replace all of its
+content with the following code, and then save it:
+var tossValue = Math.random();
+console.log("Random toss value:", tossValue);
+if(tossValue>= .5){
+console.log("Heads");
+}
+
+4. Reload the if-else-statements.html web page in your web browser with the
+console window open. Repeat until you see a version of the two examples:
+// Example of output if the number is .5 or greater.
+Random toss value: 0.8210720135035767
+Heads
+// Example of output if the number is less than .5.
+Random toss value: 0.4565522878478414
+//random()gives out a different value each time
+
+5. Edit the if-else-statements.js document, add the following bolded code, and then
+save it:
+if(tossValue>= .5){
+console.log("Heads");
+}else{
+console.log("Tails");
+}
+
+6. Reload the if-else-statements.html web page in your web browser with the
+console window open:
+// Example of output if the number is .5 or greater.
+Random toss value: 0.9519471939452648
+Heads
+// Example of output if the number is less than .5.
+Random toss value: 0.07600044264786021
+Tails
