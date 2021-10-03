@@ -1,0 +1,96 @@
+1. Open the for-of-statement.html document in your web browser.
+
+2. Open the web developer console window using your web browser.
+
+3. Open the for-of-statement.js document in your code editor, replace all of its
+content with the following code, and then save it:
+var stopWatch = {
+elapsedTime: 0,
+resultsHistory: [],
+isTiming: true,
+isPaused: true,
+start: function(){console.log("start");},
+pause: function(){console.log("pause");},
+resume: function(){console.log("resume");},
+stop: function(){console.log("stop");}
+};
+
+4. Below that, add the following code so that we can iterate through the object:
+for (let name of stopWatch) {
+console.log(name, ":", stopWatch[name]);
+};
+
+5. Reload the for-of-statement.html web page in your web browser with the console
+window open.
+An error will occur. We need to code the object so that it's iterable for it to work;
+however, we are not learning how to do that at this point:
+Uncaught TypeError: stopWatch is not iterable
+
+6. Edit the for-of-statement.js document in your code editor, replace all of its
+content with the following code, and then save it.
+A string turns out to be iterable:
+let anyString = 'abcxyz123';
+for (const value of anyString) {
+console.log(value);
+}
+
+7. Reload the for-of-statement.html web page in your web browser with the console
+window open:
+a b c x y z 1 2 3
+
+8. Edit the for-of-statement.js document in your code editor, make the changes
+shown in bold in the following code, and then save it.
+A string turns out to be iterable:
+let anyString = 'abcxyz123';
+/*
+for (let value of anyString) {
+console.log(value);
+}
+*/
+for (var i = 0; i<anyString.length; i++) {
+console.log(anyString.charAt(i));
+}
+
+9. Reload the for-of-statement.html web page in your web browser with the console
+window open. You will get the same results. The advantage of the for of loop is
+that it is more streamlined:
+a b c x y z 1 2 
+
+10. Edit the for-of-statement.js document in your code editor, replace all of its
+content with the following code, and then save it.
+An array is iterable:
+let bowlingScores = [150, 160, 144, 190, 210, 185];
+for (const value of bowlingScores) {
+console.log(value);
+}
+
+11. Reload the for-of-statement.html web page in your web browser with the console
+window open:
+150
+160
+144
+190
+210
+185
+
+12. Edit the for-of-statement.js document in your code editor, make the changes
+shown in bold in the following code, and then save it.
+An array is iterable:
+let bowlingScores = [150, 160, 144, 190, 210, 185];
+/*
+for (const value of bowlingScores) {
+console.log(value);
+}
+*/
+for (var i = 0; i<bowlingScores.length; i++) {
+console.log(bowlingScores[i]);
+}
+
+13. Reload the for-of-statement.html web page in your web browser with the console
+window open. You will get the same results:
+150
+160
+144
+190
+210
+185
