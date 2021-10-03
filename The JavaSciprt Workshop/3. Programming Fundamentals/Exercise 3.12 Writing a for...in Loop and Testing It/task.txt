@@ -1,0 +1,43 @@
+1. Open the for-in-statement.html document in your web browser.
+
+2. Open the web developer console window using your web browser.
+
+3. Open the for-in-statement.js document in your code editor, replace all of its
+content with the following code, and then save it:
+for (let name in location) {
+console.log(name);
+};
+
+4. Reload the for-in-statement.html web page in your web browser with the console
+window open.
+
+5. Edit the for-in-statement.js document, add the following bolded text, and then
+save it:
+for (let name in location) {
+console.log(name, ":", location[name]);
+};
+
+6. Reload the for-in-statement.html web page in your web browser with the console
+window open. The values may differ, assuming the web page was opened from a
+local file folder and not using http or https:
+
+7. Edit the for-in-statement.js document, replace it with the following code, and
+then save it:
+var stopWatch = {
+elapsedTime: 0,
+resultsHistory: [],
+isTiming: true,
+isPaused: true,
+start: function(){console.log("start");},
+pause: function(){console.log("pause");},
+resume: function(){console.log("resume");},
+stop: function(){console.log("stop");}
+};
+
+8. Below that, add the following code so that we can iterate through the object:
+for (const name in stopWatch) {
+console.log(name, ":", stopWatch[name]);
+};
+
+9. Reload the for-in-statement.html web page in your web browser with the console
+window open
