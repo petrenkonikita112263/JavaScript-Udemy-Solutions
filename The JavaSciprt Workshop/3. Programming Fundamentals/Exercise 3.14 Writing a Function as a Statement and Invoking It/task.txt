@@ -1,0 +1,9 @@
+This exercise will define a function as a statement and then use it. The function we will
+create will accept one parameter and return an array. If the parameter can be validated
+as a number, then each item in the array has one digit from the number starting with
+the 0 index item holding the digit for the ones place value, the 1 index item holding the
+digit for the tens place value, and so on.
+
+We will use the log method of the console object in this exercise. Remember that a
+method is a function that belongs to an object, so it can have parameters. The log
+method takes an unlimited number of parameters.
