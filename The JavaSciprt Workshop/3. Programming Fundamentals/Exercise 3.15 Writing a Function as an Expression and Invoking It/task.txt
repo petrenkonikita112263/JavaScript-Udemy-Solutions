@@ -1,0 +1,4 @@
+This exercise defines a function as an expression and then uses it.
+The function returns a single random character from a string. The string is the
+function's only parameter. If the parameter is not a string or is an empty string, then an
+empty string is returned. 
