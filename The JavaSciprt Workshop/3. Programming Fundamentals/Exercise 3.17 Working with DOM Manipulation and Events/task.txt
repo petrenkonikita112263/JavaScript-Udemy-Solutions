@@ -1,0 +1,5 @@
+This exercise will accept an input value from a web page that aims to guess a number
+from 1 to 10. A button is used to check the input value against a random number that's
+generated from 1 to 10. Depending on whether there's a match, the display property of
+the other elements on the web page is toggled to hide or show the element. Also, the
+number that's generated is displayed on the page.
