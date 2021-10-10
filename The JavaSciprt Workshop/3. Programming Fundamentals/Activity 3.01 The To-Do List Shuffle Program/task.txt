@@ -1,0 +1,22 @@
+This activity will help you build a todo list web page. We will use JavaScript 
+to load the list and shuffle the list after it has been loaded. 
+A button labeled Shuffle has been added to the HTML file and 
+the ol element has been assigned the ID, todo-list.
+
+The high-level steps for the activity are as follows:
+1. Use the activity.js file to write your code. This contains coding hint comments
+you may use if you desire. It also includes a function named getNewShuffledArray.
+
+2. You need to load the li element todo items from JavaScript and then allow the user
+to randomize the list. You may approach the activity in two parts.
+
+In Part 1, you need to use an array for the todo list items and create a function that
+updates the HTML DOM list items using an ol element and an array as parameters.
+The function will remove the previous li elements and iterate through the array
+to add new li elements with the values in the array parameter. Test before
+proceeding. You can find the HTML file at https://packt.live/2XcP1GU
+
+In Part 2, add a function to respond to the Shuffle button's click event. The
+function will use the original array of todo items and your previous function to
+update the ol element's list items. It also will use the getNewShuffledArray function
+to randomly shuffle an array and return the shuffled array.
