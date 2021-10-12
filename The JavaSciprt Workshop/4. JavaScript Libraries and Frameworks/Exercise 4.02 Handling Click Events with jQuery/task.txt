@@ -1,0 +1,2 @@
+In this exercise, we will identify how jQuery can help us react to events that get
+propagated when the target (in our case, a button) gets clicked.
