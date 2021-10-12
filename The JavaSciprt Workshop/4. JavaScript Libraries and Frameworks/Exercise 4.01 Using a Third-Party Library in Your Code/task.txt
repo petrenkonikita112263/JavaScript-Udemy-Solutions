@@ -1,0 +1,4 @@
+As we've already discovered, using external software, namely libraries and frameworks,
+is an extremely useful skill as it can save a lot of resources and help you build highly
+functional apps. In this exercise, we are going to find and utilize a library ourselves.
+We'll use the lodash library to create an array of unique values.
