@@ -1,0 +1,15 @@
+Our library won't be capable of much at first, but you may want to put some effort into
+it and extend it as you wish.
+HeadlineCreator.js is our library's name. It's a good name because it already hints at
+what it does; that is, it creates headlines. Technically speaking, our library will do the
+following:
+• Be accessible on the global window object of the current browser tab, just as we've
+seen with jQuery before: window.headlineCreator.
+• Provide a single method called createHeadline.
+• Allow us (through the createHeadline method) to create a headline with the given
+text and append it to a given parent element.
+• Take care of error handling for us, for instance, if we forgot to define some text to
+be displayed or passed an invalid selector for the parent element
+• To verify that our library is working and having an example of its usage, we will
+create, additional to creating the library itself, an HTML page including script tags
+using our HeadlineCreator.js library.
