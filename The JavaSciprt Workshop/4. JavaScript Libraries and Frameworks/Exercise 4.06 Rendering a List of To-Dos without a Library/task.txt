@@ -1,0 +1,5 @@
+In the previous exercise, we used the trendy library known as React.js to load more than
+37 KB (in ZIP format) and a couple of hundred bytes for the HTML, including the script
+tags, to create and render a list of three items. In this exercise, we are going to do the
+same thing, except we will utilize all the functionality that's already provided by the
+browser. 
