@@ -1,0 +1,2 @@
+In contrast to the previous exercise, this one demonstrates how to create a handler that
+gets triggered on a click event using plain JavaScript.
