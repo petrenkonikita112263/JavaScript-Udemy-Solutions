@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Animating PeekBoo Button</title>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+			referrerpolicy="no-referrer"
+		></script>
+	</head>
+	<body>
+		<button id="peek">Peek....</button>
+		<h1 id="aboo" style="display: none">... a-boo</h1>
+		<script>
+			const buttonElement = $("#peek");
+			const abooElement = $("#aboo");
+			buttonElement.on("click", function () {
+				abooElement.fadeToggle();
+			});
+		</script>
+	</body>
+</html>

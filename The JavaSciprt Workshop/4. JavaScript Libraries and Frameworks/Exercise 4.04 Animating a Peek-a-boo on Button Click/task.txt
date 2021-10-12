@@ -1,0 +1,4 @@
+In this exercise, you will build on the knowledge you have gained regarding how to
+handle events using jQuery. The relevant part, however, will be animating an element on
+the page.
+Whenever the "Peek…" button is clicked, the …a-boo headline will show up.
