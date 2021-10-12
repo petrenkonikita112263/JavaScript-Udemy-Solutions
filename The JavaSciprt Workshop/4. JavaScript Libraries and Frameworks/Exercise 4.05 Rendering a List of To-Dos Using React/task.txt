@@ -1,0 +1,3 @@
+In this exercise, we're going to display a few list tags as bullet points of an imaginary
+todo list. To do so, we'll be using a massively popular library called react.js and its
+complementary react-dom.js.

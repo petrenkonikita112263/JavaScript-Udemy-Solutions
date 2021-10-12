@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>List ToDos with React</title>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/react/16.9.0/umd/react.
+production.min.js"
+			charset="utf-8"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.
+production.min.js"
+			charset="utf-8"
+		></script>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script>
+			const todoList = ["buy flowers", "tidy up", "go to the gym"];
+			const divElement = document.getElementById("root");
+			const todoListElements = todoList.map((item) =>
+				React.createElement("li", null, item)
+			);
+			ReactDOM.render(todoListElements, divElement);
+		</script>
+	</body>
+</html>
