@@ -1,0 +1,46 @@
+In this activity, you have been asked to animate the todo list application that you have
+been building in the activities from the preceding chapters. Do so using one of the
+following three libraries:
+• jQuery
+• Velocity.js
+• Anime.js
+The resulting todo list should animate the to-dos whenever you click the Shuffle button.
+It's up to you what exact animation you use, but nonetheless, I advise you to start with
+something simple, such as fading the to-dos.
+The high-level steps for the activity are as follows:
+Choose one of the frameworks. To gain a better understanding of how to use them,
+search for them online and have a look at their documentation (https://jquery.com,
+http://velocityjs.org, https://animejs.com):
+1. Go to cdnjs.com and get the jQuery CDN URL.
+2. Load the library into the head tag of your existing Todo-List-HTML using a script
+tag. This will enable you to use jQuery within your code.
+3. Inside activity.js, you need to change the todoEle variable. Change it to a jQuery
+element.
+4. Inside the replaceListElements function, you can now use functions on the todoEle
+element that jQuery provides to you.
+5. Hide and clear what's inside the element using the jQuery functions.
+6. Inside the for loop, create the liEle list item element, set the text contest, and
+append it to the listEle list element.
+7. Finally, slowly fade in the new sorted todo list, that is, listEle.
+8. Now, open the HTML in your browser and click the Shuffle button. The to-do list
+should fade out, shuffle, and fade in again. You will see the expected output.
+9. Now, we'll use the Velocity.js method. Go to cdnjs.com and get the velocity.js
+CDN URL.
+10. Load the library into the head tag of your existing Todo-List-HTML using a script
+tag. This will allow you to use velocity.js within your code.
+11. Inside the replaceListElements function, you can now use Velocity.js to hide (by
+setting opacity to 0) the list element, listEle, and then empty the elements inside
+of it.
+12. To fade the list element back in, animate listEle using Velocity.js and set the
+opacity to 1. Set the code after the for loop.
+13. Now, open the HTML in your browser and click the Shuffle button. The to-do list
+should fade out, shuffle, and fade in again.
+14. Finally, using the Animae method, go to cdnjs.com and get the Anime.js CDN URL.
+15. Load the library into the head tag of your existing Todo-List-HTML using a script
+tag. This will allow you to use Anime.js within your code.
+16. Inside the replaceListElements function, you can now use Anime.js to move (by
+using translateX = -1000) the list element, listEle, out of view and then empty the
+elements inside of it.
+17. To show the newly shuffled to-do list, use Anime.js to animate the listEle list
+element back into view (translateX = 0). Do so inside a timeout to ensure that the
+shuffling has been done already.
