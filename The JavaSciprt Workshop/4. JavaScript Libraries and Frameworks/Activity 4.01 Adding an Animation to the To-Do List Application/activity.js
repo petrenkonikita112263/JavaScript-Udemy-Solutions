@@ -25,13 +25,35 @@ var todoList = [
 
 ////////////////////////// VELOCITY ///////////////////////
 // Declare and initialize variable for the todo list element
+// var todoListElement = document.getElementById("todo-list")
+
+// function replaceListItems(listElement, listOfItems) {
+// 	Velocity(listElement, {
+// 		opacity: 0
+// 	}, {
+// 		duration: 0
+// 	})
+// 	listElement.innerHTML = ""
+// 	for (let i = 0; i < listOfItems.length; i++) {
+// 		let liElement = document.createElement("li")
+// 		liElement.appendChild(document.createTextNode(listOfItems[i]))
+// 		listElement.appendChild(liElement)
+// 	}
+// 	Velocity(listElement, {
+// 		opacity: 1
+// 	}, {
+// 		duration: 400
+// 	})
+// }
+
+////////////////////////// ANIMEJS ///////////////////////
+// Declare and initialize variable for the todo list element
 var todoListElement = document.getElementById("todo-list")
 
 function replaceListItems(listElement, listOfItems) {
-	Velocity(listElement, {
-		opacity: 0
-	}, {
-		duration: 0
+	anime({
+		targets: listElement,
+		translateX: -1000
 	})
 	listElement.innerHTML = ""
 	for (let i = 0; i < listOfItems.length; i++) {
@@ -39,11 +61,12 @@ function replaceListItems(listElement, listOfItems) {
 		liElement.appendChild(document.createTextNode(listOfItems[i]))
 		listElement.appendChild(liElement)
 	}
-	Velocity(listElement, {
-		opacity: 1
-	}, {
-		duration: 400
-	})
+	setTimeout(() => {
+		anime({
+			targets: listElement,
+			translateX: 0
+		})
+	}, 500)
 }
 
 // Declare and initialize variable for shuffle button element.
