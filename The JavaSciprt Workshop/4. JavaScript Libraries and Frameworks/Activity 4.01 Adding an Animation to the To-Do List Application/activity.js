@@ -8,18 +8,42 @@ var todoList = [
 	"Prepare Dinner",
 ]
 
+////////////////////////// JQUERY ///////////////////////
 // Declare and initialize variable for the todo list element
-var todoListElement = $("#todo-list")
+// var todoListElement = $("#todo-list")
+
+// function replaceListItems(listElement, listOfItems) {
+// 	listElement.hide()
+// 	listElement.empty()
+// 	for (let i = 0; i < listOfItems.length; i++) {
+// 		let liElement = $(document.createElement("li"))
+// 		liElement.append(document.createTextNode(listOfItems[i]))
+// 		listElement.append(liElement)
+// 	}
+// 	listElement.fadeIn("slow")
+// }
+
+////////////////////////// VELOCITY ///////////////////////
+// Declare and initialize variable for the todo list element
+var todoListElement = document.getElementById("todo-list")
 
 function replaceListItems(listElement, listOfItems) {
-	listElement.hide()
-	listElement.empty()
+	Velocity(listElement, {
+		opacity: 0
+	}, {
+		duration: 0
+	})
+	listElement.innerHTML = ""
 	for (let i = 0; i < listOfItems.length; i++) {
-		let liElement = $(document.createElement("li"))
-		liElement.append(document.createTextNode(listOfItems[i]))
-		listElement.append(liElement)
+		let liElement = document.createElement("li")
+		liElement.appendChild(document.createTextNode(listOfItems[i]))
+		listElement.appendChild(liElement)
 	}
-	listElement.fadeIn("slow")
+	Velocity(listElement, {
+		opacity: 1
+	}, {
+		duration: 400
+	})
 }
 
 // Declare and initialize variable for shuffle button element.
