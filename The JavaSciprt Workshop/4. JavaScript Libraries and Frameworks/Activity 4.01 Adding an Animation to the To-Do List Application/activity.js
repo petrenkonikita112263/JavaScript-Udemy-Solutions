@@ -1,22 +1,25 @@
 // Declare and initialize the todo list array
 var todoList = [
-    "Wash Laundry",
-    "Clean Silver",
-    "Write Letters",
-    "Purchase Groceries",
-    "Retrieve Mail",
-    "Prepare Dinner"
+	"Wash Laundry",
+	"Clean Silver",
+	"Write Letters",
+	"Purchase Groceries",
+	"Retrieve Mail",
+	"Prepare Dinner",
 ]
 
 // Declare and initialize variable for the todo list element
-var todoListElement = document.getElementById("todo-list")
+var todoListElement = $("#todo-list")
+
 function replaceListItems(listElement, listOfItems) {
-    listElement.innerHTML = ""
-    for (let i = 0; i < listOfItems.length; i++) {
-        let liElement = document.createElement("li")
-        liElement.appendChild(document.createTextNode(listOfItems[i]))
-        listElement.appendChild(liElement)
-    }
+	listElement.hide()
+	listElement.empty()
+	for (let i = 0; i < listOfItems.length; i++) {
+		let liElement = $(document.createElement("li"))
+		liElement.append(document.createTextNode(listOfItems[i]))
+		listElement.append(liElement)
+	}
+	listElement.fadeIn("slow")
 }
 
 // Declare and initialize variable for shuffle button element.
@@ -30,14 +33,14 @@ shuffleButtonElement.addEventListener("click", clickShuffleButton)
 /**
  * Shuffles array elements
  * @param {array} sourceArray - Array to be shuffled.
- * @return {array} - New array with shuffled items 
-*/
+ * @return {array} - New array with shuffled items
+ */
 function getNewShuffledArray(sourceArray) {
 	// Make a copy of the sourceArray
 	var newArray = [].concat(sourceArray)
 	// The index for making a swap starting with last
 	let swapIndex = newArray.length
-	// The index to make a swap with swapIndex 
+	// The index to make a swap with swapIndex
 	let swapWithIndex
 	// Copy of the swapIndex value being swapped
 	let swapIndexValue
@@ -59,7 +62,7 @@ function getNewShuffledArray(sourceArray) {
 
 // Function to handle click events for the Shuffle button
 function clickShuffleButton() {
-    replaceListItems(todoListElement, getNewShuffledArray(todoList))
+	replaceListItems(todoListElement, getNewShuffledArray(todoList))
 }
 
 // Update the todo list view with initial list of items
