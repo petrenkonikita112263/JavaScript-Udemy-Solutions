@@ -22,3 +22,32 @@ arguments there will be.
 4. Add all the arguments together and calculate the average. Store this in a variable.
 5. Determine the grade from the student based on the average and return it.
 */
+
+function calculateAverageGrade() {
+    var args = Array.prototype.slice.call(arguments)
+    var sum = 0
+    for (let index = 0; index < args.length; index++) {
+        sum += Number(args[index])
+    }
+    return sum / args.length
+}
+
+function determineGrade(average) {
+    if (average < 35) {
+        console.log("Student average grade is F")
+    } else if (average >= 35 && average < 44) {
+        console.log("Student average grade is D")
+    } else if (average >= 45 && average < 59) {
+        console.log("Student average grade is C")
+    } else if (average >= 60 && average < 74) {
+        console.log("Student average grade is B")
+    } else if (average > 75) {
+        console.log("Student average grade is A")
+    } else {
+        alert("none")
+    }
+}
+
+var studentAverage1 = calculateAverageGrade(28, 95, 51, 38, 44, 40, 55, 62, 54, 25)
+console.log(studentAverage1)
+determineGrade(studentAverage1)
