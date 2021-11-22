@@ -10,5 +10,6 @@
 // document.querySelector(".guess").value = 13
 
 document.querySelector(".check").addEventListener("click", function () {
-    console.log(document.querySelector(".guess").value)
+    let guess = Number(document.querySelector(".guess").value)
+    console.log(guess, typeof guess)
 })
