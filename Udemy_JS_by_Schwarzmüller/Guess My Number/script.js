@@ -9,7 +9,7 @@
 
 // document.querySelector(".guess").value = 13
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1
+var secretNumber = Math.trunc(Math.random() * 20) + 1
 var score = 20
 
 document.querySelector(".check").addEventListener("click", function () {
@@ -38,4 +38,15 @@ document.querySelector(".check").addEventListener("click", function () {
             document.querySelector(".message").textContent = "🥺 You Lose!"
         }
     }
+})
+
+document.querySelector(".again").addEventListener("click", function () {
+    score = 20
+    secretNumber = Math.trunc(Math.random() * 20) + 1
+    document.querySelector(".score").textContent = score
+    document.querySelector(".number").textContent = "?"
+    document.querySelector(".message").textContent = "Start guessing..."
+    document.querySelector(".guess").value = ""
+    document.querySelector("body").style.backgroundColor = "#222"
+    document.querySelector(".number").style.width = "15rem"
 })
