@@ -22,7 +22,7 @@ document.querySelector(".check").addEventListener("click", function () {
         document.querySelector("body").style.backgroundColor = "#60b347"
         document.querySelector(".number").style.width = "30rem"
     } else if (guess > secretNumber) {
-        if (score > 1) {
+        if (score >= 1) {
             document.querySelector(".message").textContent = "📈 Too High!"
             score--
             document.querySelector(".score").textContent = score
@@ -30,7 +30,7 @@ document.querySelector(".check").addEventListener("click", function () {
             document.querySelector(".message").textContent = "🥺 You Lose!"
         }
     } else if (guess < secretNumber) {
-        if (score > 1) {
+        if (score >= 1) {
             document.querySelector(".message").textContent = "📉 Too Low!"
             score--
             document.querySelector(".score").textContent = score
