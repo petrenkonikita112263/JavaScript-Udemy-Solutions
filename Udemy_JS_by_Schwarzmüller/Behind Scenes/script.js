@@ -10,7 +10,12 @@ function calcAge(birthYear) {
     if (birthYear >= 1983 && birthYear <= 1996) {
         let str = `Oh, and you're a millenial, ${firstName}`
         console.log(str)
+
+        function add(a, b) {
+            return a + b
+        }
     }
+    // console.log(add(2, 3))
     printAge()
     return age
 }
