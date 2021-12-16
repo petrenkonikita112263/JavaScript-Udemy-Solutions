@@ -25,8 +25,22 @@ calcAge(1992)
 
 console.log(me)
 console.log(myJob)
-console.log(year)
+// console.log(year)
 
 var me = "Nikita"
 var myJob = "Ph. D Student"
 const year = 1995
+
+console.log(addDeclaration(2, 3))
+console.log(addExpresion(2, 3))
+console.log(addArrow(2, 3))
+
+function addDeclaration(a, b) {
+    return a + b
+}
+
+const addExpresion = function (a, b) {
+    return a + b
+}
+
+const addArrow = (a, b) => a + b
