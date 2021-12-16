@@ -22,3 +22,11 @@ function calcAge(birthYear) {
 
 const firstName = "Nikita"
 calcAge(1992)
+
+console.log(me)
+console.log(myJob)
+console.log(year)
+
+var me = "Nikita"
+var myJob = "Ph. D Student"
+const year = 1995
