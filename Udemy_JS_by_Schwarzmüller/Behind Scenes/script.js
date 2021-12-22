@@ -1,5 +1,8 @@
 "use strict"
 
+///////////////////////////////////////
+// Scoping in Practice
+
 function calcAge(birthYear) {
     let age = 2037 - birthYear
 
@@ -23,6 +26,10 @@ function calcAge(birthYear) {
 const firstName = "Nikita"
 calcAge(1992)
 
+///////////////////////////////////////
+// Hoisting and TDZ in Practice
+
+// Variables
 console.log(me)
 console.log(myJob)
 // console.log(year)
@@ -35,6 +42,7 @@ console.log(addDeclaration(2, 3))
 // console.log(addExpresion(2, 3))
 // console.log(addArrow(2, 3))
 
+// Functions
 function addDeclaration(a, b) {
     return a + b
 }
