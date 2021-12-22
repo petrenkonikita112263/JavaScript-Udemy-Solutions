@@ -14,3 +14,62 @@ or MODIFY.
 */
 
 "use strict"
+
+var todos = []
+
+function findIndex(state, id) {
+    for (let index = 0; index < state.length; index++) {
+        if (state[index].id === id) {
+            return index
+        }
+    }
+    return -1
+}
+
+function modelStateChange(state, action, data) {
+    if (action === "CREATE") {
+        data["createdAt"] = new Date()
+        data["updatedAt"] = new Date()
+        data["completed"] = false
+        console.log(`Created new data: ${data}`)
+        return state.concat(data)
+    } else if (action === "REMOVE") {
+        let itemIndex = findIndex(state, state.id)
+        if (itemIndex > -1) {
+            console.log(`Removed item: ${state[itemIndex]}`)
+            delete state[itemIndex]
+            return state
+        }
+    } else if (action === "MODIFY") {
+        let itemIndex = findIndex(state, state.id)
+        let modifyItem = state.splice(itemIndex, 1)
+        modifyItem[0]["updatedAt"] = new Date()
+        modifyItem[0]["completed"] = data.completed
+        console.log(`Modified item: ${modifyItem[0]}`)
+        state[itemIndex] = modifyItem[0]
+        return state
+    } else {
+        console.log("Wrong action")
+    }
+}
+
+todos = modelStateChange(todos, "CREATE", {
+    id: 1,
+    title: "Learn JS",
+    description: "I will learn JS from Packtpub.com"
+})
+
+todos = modelStateChange(todos, "CREATE", {
+    id: 2,
+    title: "Learn Event",
+    description: "I will learn JS Event from Packtpub.com"
+})
+
+todos = modelStateChange(todos, "MODIFY", {
+    id: 2,
+    completed: true
+})
+
+todos = modelStateChange(todos, "REMOVE", {
+    id: "1"
+})
