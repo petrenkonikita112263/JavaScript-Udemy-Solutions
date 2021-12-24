@@ -51,7 +51,7 @@ const addExpresion = function (a, b) {
     return a + b
 }
 
-const addArrow = (a, b) => a + b
+const addArrowFunction = (a, b) => a + b
 
 if (!numberProduct) {
     deleteShoppingCart()
@@ -90,4 +90,47 @@ matilda.calcAge = jonas.calcAge
 matilda.calcAge()
 
 const f = jonas.calcAge
-f()
+// f()
+
+///////////////////////////////////////
+// Regular Functions vs. Arrow Functions
+
+const newJonas = {
+    firstName: "Jonas",
+    year: 1991,
+    calcAge: function () {
+        console.log(2037 - this.year)
+
+        // old solution 1
+        // const self = this // self or that
+        // const isMellenium = function () {
+        //     console.log(self)
+        //     console.log(self.year >= 1981 && self.year <= 1996)
+        // }
+        // isMellenium()
+
+        // solution 2
+        const isMellenium = () => {
+            console.log(this)
+            console.log(this.year >= 1981 && this.year <= 1996)
+        }
+        isMellenium()
+    },
+    greet: () => console.log(`Hey ${this.firstName}`)
+}
+newJonas.greet()
+newJonas.calcAge()
+
+// arguments keyword exist only in regular function (not in arrow)
+const addExpr = function (a, b) {
+    console.log(arguments)
+    return a + b
+}
+addExpr(2, 5)
+addExpr(2, 5, 8, 12)
+
+var addArrow = (a, b) => {
+    console.log(arguments)
+    return a + b
+}
+addArrow(2, 5, 8)
