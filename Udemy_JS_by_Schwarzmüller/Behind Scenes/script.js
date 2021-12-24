@@ -30,11 +30,11 @@ calcAge(1992)
 // Hoisting and TDZ in Practice
 
 // Variables
-console.log(me)
+// console.log(me)
 console.log(myJob)
 // console.log(year)
 
-var me = "Nikita"
+// var me = "Nikita"
 var myJob = "Ph. D Student"
 const year = 1995
 
@@ -133,4 +133,22 @@ var addArrow = (a, b) => {
     console.log(arguments)
     return a + b
 }
-addArrow(2, 5, 8)
+// addArrow(2, 5, 8)
+
+///////////////////////////////////////
+// Objects vs. primitives
+let age = 30
+let oldAge = age
+age = 31
+
+console.log(age)
+console.log(oldAge)
+
+const me = {
+    name: "Nikita",
+    age: 26
+}
+const friend = me
+friend.age = 27
+console.log(me)
+console.log(friend)
