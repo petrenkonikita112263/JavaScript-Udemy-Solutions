@@ -206,3 +206,37 @@ DATA CAR 1: 'Ford' going at 120 km/h
 
 GOOD LUCK 😀
 */
+
+class CarClass {
+    constructor(make, speed) {
+        this.make = make
+        this.speed = speed
+    }
+
+    get speedUS() {
+        return this.speed / 1.6
+    }
+
+    set speedUS(speedValue) {
+        this.speed = speedValue * 1.6
+    }
+
+    accelerate() {
+        this.speed += 10
+        console.log(`${this.make} going at ${this.speed} km/h`)
+    }
+
+    brake() {
+        this.speed -= 5
+        console.log(`${this.make} going at ${this.speed} km/h`)
+    }
+}
+
+const ford = new CarClass("Ford", 120)
+console.log(ford.speedUS)
+ford.speedUS = 25
+console.log(ford)
+console.log(ford.speedUS)
+ford.accelerate()
+ford.brake()
+ford.brake()
