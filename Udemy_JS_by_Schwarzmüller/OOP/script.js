@@ -302,3 +302,18 @@ class StudentClass extends PersonClass {
 const martha = new StudentClass("Martha Jones", 2012, "Computer Science")
 martha.introduce()
 martha.calcAge()
+
+///////////////////////////////////////
+// Inheritance Between "Classes": Object.create
+const StudentPrototype = Object.create(PersonPrototype)
+StudentPrototype.init = function (firstName, birthYear, course) {
+    PersonPrototype.init.call(this, firstName, birthYear)
+    this.course = course
+}
+StudentPrototype.introduce = function () {
+    console.log(`My name is ${this.firstName} and I study ${this.course}`)
+}
+const jay = Object.create(StudentPrototype)
+jay.init("Jay", 2010, "Computer Science")
+jay.introduce()
+jay.calcAge()
