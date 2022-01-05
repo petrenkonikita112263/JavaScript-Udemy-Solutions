@@ -277,3 +277,28 @@ console.log(mike instanceof Object)
 
 Student.prototype.constructor = Student
 console.dir(Student.prototype.constructor)
+
+///////////////////////////////////////
+// Inheritance Between "Classes": ES6 Classes
+class StudentClass extends PersonClass {
+    constructor(fullName, birthYear, course) {
+        super(fullName, birthYear)
+        this.course = course
+    }
+
+    introduce = function () {
+        console.log(`My name is ${this.fullName} and I study ${this.course}`)
+    }
+
+    calcAge() {
+        console.log(`I'm ${
+            2037 - this.birthYear
+          } years old, but as a student I feel more like ${
+            2037 - this.birthYear + 10
+          }`)
+    }
+}
+
+const martha = new StudentClass("Martha Jones", 2012, "Computer Science")
+martha.introduce()
+martha.calcAge()
