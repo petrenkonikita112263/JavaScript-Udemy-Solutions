@@ -26,4 +26,33 @@ const restaurant = {
       close: 24,
     },
   },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+  }
 }
+
+const arr = [2, 3, 4]
+const [x, y, z] = arr
+console.log(x, y, z)
+console.log(arr)
+
+let [main, , secondary] = restaurant.categories
+console.log(main, secondary)
+
+// switching variables
+[main, secondary] = [secondary, main]
+console.log(main, secondary)
+
+// reveice 2 return values from the function
+console.log(restaurant.order(2, 0))
+const [starterCourse, mainCourse] = restaurant.order(2, 0)
+console.log(starterCourse, mainCourse)
+
+// nested destructuring
+const nested = [2, 4, [5, 6]]
+const [i, , [j, k]] = nested
+console.log(i, j, k)
+
+// default values
+const [p = 1, q = 1, r = 1] = [8, 9]
+console.log(p, q, r)
