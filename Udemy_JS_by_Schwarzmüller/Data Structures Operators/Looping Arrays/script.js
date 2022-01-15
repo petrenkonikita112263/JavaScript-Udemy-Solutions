@@ -1,5 +1,22 @@
 "use strict"
 
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+
+const openingHours = {
+    [weekdays[3]]: {
+        open: 12,
+        close: 22,
+    },
+    [weekdays[4]]: {
+        open: 11,
+        close: 23,
+    },
+    [weekdays[5]]: {
+        open: 0, // Open 24 hours
+        close: 24,
+    },
+}
+
 
 // Data needed for first part of the section
 const restaurant = {
@@ -9,22 +26,10 @@ const restaurant = {
     starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
     mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-    openingHours: {
-        thu: {
-            open: 12,
-            close: 22,
-        },
-        fri: {
-            open: 11,
-            close: 23,
-        },
-        sat: {
-            open: 0, // Open 24 hours
-            close: 24,
-        },
-    },
+    // ES6 echanced object literals
+    openingHours,
 
-    order: function (starterIndex, mainIndex) {
+    order(starterIndex, mainIndex) {
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
     },
 
@@ -39,7 +44,7 @@ const restaurant = {
         )
     },
 
-    orderPasta: function (ing1, ing2, ing3) {
+    orderPasta(ing1, ing2, ing3) {
         console.log(ing1, ing2, ing3)
     }
 }
