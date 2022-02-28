@@ -31,3 +31,39 @@ BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
 
 GOOD LUCK 😀
 */
+
+const poll = {
+    question: "What is your favourite programming language?",
+    options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+    answers: new Array(4).fill(0),
+    registerNewUser() {
+        let userAnswer = Number(
+            prompt(
+                `${this.question}\n${this.options.join(
+                    "\n"
+                )}\n(Write option number)`
+            )
+        )
+        typeof userAnswer === "number" &&
+            userAnswer < this.answers.length &&
+            this.answers[userAnswer]++
+        this.displayResults()
+        this.displayResults("string")
+    },
+    displayResults(type = "array") {
+        if (type === "array") {
+            console.log(this.answers)
+        } else if (type === "string") {
+            // Poll results are 13, 2, 4, 1
+            console.log(`Poll results are ${this.answers.join(", ")}`)
+        }
+    },
+}
+
+document
+    .querySelector(".poll")
+    .addEventListener("click", poll.registerNewUser.bind(poll))
+
+poll.displayResults.call({ answers: [5, 2, 3] }, "string")
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, "string")
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] })
