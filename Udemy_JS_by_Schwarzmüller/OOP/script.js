@@ -63,7 +63,7 @@ Array.prototype.unique = function () {
 console.log(arr.unique())
 
 const h1 = document.queryCommandValue("h1")
-console.dir(x => x + 1)
+console.dir((x) => x + 1)
 
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -135,13 +135,13 @@ class PersonClass {
     }
 
     greet() {
-        console.log(`Hey ${this.fullName}`);
+        console.log(`Hey ${this.fullName}`)
     }
 
     // Static method
     static hey() {
-        console.log('Hey there 👋');
-        console.log(this);
+        console.log("Hey there 👋")
+        console.log(this)
     }
 }
 
@@ -164,7 +164,7 @@ const account = {
     },
     set latest(mov) {
         this.movements.push(mov)
-    }
+    },
 }
 console.log(account.latest)
 account.latest = 50
@@ -183,7 +183,7 @@ const PersonPrototype = {
     },
 }
 
-const steven = Object.create(PersonPrototype);
+const steven = Object.create(PersonPrototype)
 console.log(steven)
 steven.name = "Steven"
 steven.birthYear = 2002
@@ -291,11 +291,13 @@ class StudentClass extends PersonClass {
     }
 
     calcAge() {
-        console.log(`I'm ${
-            2037 - this.birthYear
-          } years old, but as a student I feel more like ${
-            2037 - this.birthYear + 10
-          }`)
+        console.log(
+            `I'm ${
+                2037 - this.birthYear
+            } years old, but as a student I feel more like ${
+                2037 - this.birthYear + 10
+            }`
+        )
     }
 }
 
@@ -343,7 +345,9 @@ EV.prototype.chargeBattery = function (chargeTo) {
 EV.prototype.accelerate = function () {
     this.speed += 20
     this.charge -= 1
-    console.log(`${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`)
+    console.log(
+        `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`
+    )
 }
 
 const tesla = new EV("Tesla", 100, 0)
@@ -354,21 +358,25 @@ class Account {
     constructor(owner, currency, pin) {
         this.owner = owner
         this.currency = currency
-        this.pin = pin
-        this.movements = []
+        this._pin = pin
+        this._movements = []
         this.locale = navigator.language
         console.log(`Thanks for opening an account ${owner}`)
     }
 
+    getMovements() {
+        return this._movements
+    }
+
     deposit(val) {
-        this.movements.push(val)
+        this._movements.push(val)
     }
 
     withdraw(val) {
         this.deposit(-val)
     }
 
-    approveLoan(val) {
+    _approveLoan(val) {
         return true
     }
 
