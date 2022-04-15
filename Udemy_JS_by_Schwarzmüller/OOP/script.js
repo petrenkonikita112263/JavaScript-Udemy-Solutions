@@ -355,11 +355,13 @@ tesla.chargeBattery(22)
 tesla.accelerate()
 
 class Account {
+    #movements = []
+    #pin
+
     constructor(owner, currency, pin) {
         this.owner = owner
         this.currency = currency
-        this._pin = pin
-        this._movements = []
+        this.#pin = pin
         this.locale = navigator.language
         console.log(`Thanks for opening an account ${owner}`)
     }
@@ -369,19 +371,19 @@ class Account {
     }
 
     deposit(val) {
-        this._movements.push(val)
+        this.#movements.push(val)
     }
 
     withdraw(val) {
         this.deposit(-val)
     }
 
-    _approveLoan(val) {
+    #approveLoan(val) {
         return true
     }
 
     requestLoan(val) {
-        if (this.approveLoan(val)) {
+        if (this.#approveLoan(val)) {
             this.deposit(val)
             console.log("Loan approved")
         }
