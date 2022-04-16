@@ -372,10 +372,12 @@ class Account {
 
     deposit(val) {
         this.#movements.push(val)
+        return this
     }
 
     withdraw(val) {
         this.deposit(-val)
+        return this
     }
 
     #approveLoan(val) {
@@ -386,6 +388,7 @@ class Account {
         if (this.#approveLoan(val)) {
             this.deposit(val)
             console.log("Loan approved")
+            return this
         }
     }
 }
@@ -395,3 +398,7 @@ acc1.deposit(250)
 acc1.withdraw(140)
 acc1.requestLoan(1000)
 console.log(acc1)
+
+// chaining
+acc1.deposit(300).deposit(300).withdraw(35).requestLoan(25000).withdraw(4000)
+console.log(acc1.getMovements())
