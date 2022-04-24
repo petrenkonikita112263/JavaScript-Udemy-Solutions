@@ -18,3 +18,37 @@ TEST DATA 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
+const juliasDogs1 = [3, 5, 2, 12, 7]
+const kateDogs1 = [4, 1, 15, 8, 3]
+const juliasDogs2 = [9, 16, 6, 8, 3]
+const kateDogs2 = [10, 5, 6, 1, 4]
+
+function removeCats(arr) {
+    arr.splice(0, 1)
+    arr.splice(-2)
+    return arr
+}
+
+function nicePrinting(arr) {
+    arr.forEach(function (dog, i, arr) {
+        if (dog >= 3) {
+            console.log(
+                `Dog number ${i + 1} is an adult, and is ${dog} years old`
+            )
+        } else {
+            console.log(`Dog number ${i + 1} is still a puppy 🐶`)
+        }
+    })
+}
+
+function checkDogs(arr1, arr2) {
+    arr1Copy = [...arr1]
+    arr2Copy = [...arr2]
+    const onlyDogs1 = removeCats(arr1Copy)
+    const onlyDogs2 = removeCats(arr2Copy)
+    const allDogs = [...onlyDogs1, ...onlyDogs2]
+    nicePrinting(allDogs)
+}
+
+checkDogs(juliasDogs1, kateDogs1)
+checkDogs(juliasDogs2, kateDogs2)
