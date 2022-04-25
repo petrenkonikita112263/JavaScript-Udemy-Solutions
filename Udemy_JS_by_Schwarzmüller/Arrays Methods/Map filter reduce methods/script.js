@@ -21,3 +21,18 @@ const movementsDescriptions = movementsExample.map(
         } ${Math.abs(mov)}`
 )
 console.log(movementsDescriptions)
+
+///////////////////////////////////////
+// The filter Method
+const deposits = movementsExample.filter(function (mov) {
+    return mov > 0
+})
+console.log(movementsExample)
+console.log(deposits)
+
+const depositsFor = []
+for (const mov of movementsExample) if (mov > 0) depositsFor.push(mov)
+console.log(depositsFor)
+
+const withdrawals = movementsExample.filter((mov) => mov < 0)
+console.log(withdrawals)
