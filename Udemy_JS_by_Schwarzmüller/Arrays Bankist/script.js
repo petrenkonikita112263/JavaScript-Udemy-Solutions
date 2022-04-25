@@ -77,3 +77,16 @@ const displayMovements = function (movements, sort = false) {
         containerMovements.insertAdjacentHTML("afterbegin", html)
     })
 }
+
+function createUsername(accts) {
+    accts.forEach(function (acct) {
+        acct.username = acct.owner
+            .toLowerCase()
+            .split(" ")
+            .map((word) => word[0])
+            .join("")
+    })
+}
+
+createUsername(accounts)
+console.log(accounts)
