@@ -78,6 +78,28 @@ const displayMovements = function (movements, sort = false) {
     })
 }
 
+const calcDisplaySummary = function (acc) {
+    const incomes = acc.movements
+        .filter((mov) => mov > 0)
+        .reduce((acc, mov) => acc + mov, 0)
+    labelSumIn.textContent = `${incomes}€`
+
+    const out = acc.movements
+        .filter((mov) => mov < 0)
+        .reduce((acc, mov) => acc + mov, 0)
+    labelSumOut.textContent = `${Math.abs(out)}€`
+
+    const interest = acc.movements
+        .filter((mov) => mov > 0)
+        .map((deposit) => (deposit * acc.interestRate) / 100)
+        .filter((int, i, arr) => {
+            // console.log(arr);
+            return int >= 1
+        })
+        .reduce((acc, int) => acc + int, 0)
+    labelSumInterest.textContent = `${interest}€`
+}
+
 function createUsername(accts) {
     accts.forEach(function (acct) {
         acct.username = acct.owner
@@ -88,11 +110,19 @@ function createUsername(accts) {
     })
 }
 
-createUsername(accounts)
-
 const calcDisplayBalance = function (acc) {
     acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0)
     labelBalance.textContent = `${acc.balance}€`
     console.log(labelBalance.textContent)
 }
-calcDisplayBalance(account1)
+
+const updateUI = function (acc) {
+    // Display movements
+    displayMovements(acc.movements)
+
+    // Display balance
+    calcDisplayBalance(acc)
+
+    // Display summary
+    calcDisplaySummary(acc)
+}
