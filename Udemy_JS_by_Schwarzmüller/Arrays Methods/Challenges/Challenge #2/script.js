@@ -17,3 +17,18 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
+
+const juliasDogs = [5, 2, 4, 1, 15, 8, 3]
+const kateDogs = [16, 6, 10, 5, 6, 1, 4]
+const allDogs = [...juliasDogs, ...kateDogs]
+
+function calcAverageHumanAge(ages) {
+    const averageHumanAge = ages
+        .map((age) => (age <= 2 ? 2 * age : 16 + age * 4))
+        .filter((age) => age >= 18)
+        .reduce(function (avg, age, _, { length }) {
+            return avg + age / length
+        }, 0)
+}
+
+console.log(calcAverageHumanAge(allDogs))
