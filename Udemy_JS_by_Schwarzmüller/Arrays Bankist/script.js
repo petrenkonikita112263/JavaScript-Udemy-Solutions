@@ -126,3 +126,24 @@ const updateUI = function (acc) {
     // Display summary
     calcDisplaySummary(acc)
 }
+
+// Event handlers
+
+let selectedAccount
+
+btnLogin.addEventListener("click", function (e) {
+    e.preventDefault()
+    selectedAccount = accounts.find(
+        (acc) => acc.username === inputLoginUsername.value
+    )
+    console.log(selectedAccount)
+    if (selectedAccount?.pin === Number(inputLoginPin.value)) {
+        labelWelcome.textContent = `Welcome back, ${
+            selectedAccount.owner.split(" ")[0]
+        }`
+        containerApp.style.opacity = 100
+        inputLoginUsername.value = inputLoginPin.value = ""
+        inputLoginPin.blur()
+        updateUI(selectedAccount)
+    }
+})
