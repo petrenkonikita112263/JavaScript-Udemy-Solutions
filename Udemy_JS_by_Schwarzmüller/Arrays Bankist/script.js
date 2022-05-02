@@ -149,3 +149,24 @@ btnLogin.addEventListener("click", function (e) {
         updateUI(selectedAccount)
     }
 })
+
+btnTransfer.addEventListener("click", function (e) {
+    e.preventDefault()
+    const moneyAmount = Number(inputTransferAmount.value)
+    const receiverAccount = accounts.find(
+        (acc) => acc.username === inputTransferTo.value
+    )
+    console.log(moneyAmount, receiverAccount)
+    if (
+        moneyAmount > 0 &&
+        moneyAmount <= selectedAccount.balance &&
+        receiverAccount &&
+        receiverAccount?.username !== selectedAccount.username
+    ) {
+        console.log("Transfer is valid")
+        selectedAccount.movements.push(-moneyAmount)
+        receiverAccount.movements.push(moneyAmount)
+        updateUI(selectedAccount)
+    }
+    inputTransferAmount.value = inputTransferTo.value = ""
+})
