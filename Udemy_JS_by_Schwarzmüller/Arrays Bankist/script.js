@@ -185,3 +185,16 @@ btnClose.addEventListener("click", function (e) {
         containerApp.style.opacity = 0
     }
 })
+
+btnLoan.addEventListener("click", function (e) {
+    e.preventDefault()
+    const loanAmount = Number(inputLoanAmount.value)
+    if (
+        loanAmount > 0 &&
+        selectedAccount.movements.some((mov) => mov >= loanAmount * 0.1)
+    ) {
+        selectedAccount.movements.push(loanAmount)
+        updateUI(selectedAccount)
+    }
+    inputLoanAmount.value = ""
+})
