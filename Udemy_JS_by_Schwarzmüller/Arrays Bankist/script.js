@@ -170,3 +170,18 @@ btnTransfer.addEventListener("click", function (e) {
     }
     inputTransferAmount.value = inputTransferTo.value = ""
 })
+
+btnClose.addEventListener("click", function (e) {
+    e.preventDefault()
+    if (
+        inputCloseUsername.value === selectedAccount.username &&
+        Number(inputClosePin.value) === selectedAccount.pin
+    ) {
+        const index = accounts.findIndex(
+            (acc) => acc.username === selectedAccount.username
+        )
+        accounts.splice(index, 1)
+        inputCloseUsername.value = inputClosePin.value = ""
+        containerApp.style.opacity = 0
+    }
+})
