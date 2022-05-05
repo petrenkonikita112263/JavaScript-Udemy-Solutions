@@ -198,3 +198,10 @@ btnLoan.addEventListener("click", function (e) {
     }
     inputLoanAmount.value = ""
 })
+
+let sortedState = false
+btnSort.addEventListener("click", function (e) {
+    e.preventDefault()
+    displayMovements(selectedAccount.movements, !sortedState)
+    sortedState = !sortedState
+})
