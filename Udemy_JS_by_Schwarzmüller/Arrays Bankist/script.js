@@ -151,7 +151,7 @@ btnLogin.addEventListener("click", function (e) {
         (acc) => acc.username === inputLoginUsername.value
     )
     console.log(selectedAccount)
-    if (selectedAccount?.pin === Number(inputLoginPin.value)) {
+    if (selectedAccount?.pin === +inputLoginPin.value) {
         labelWelcome.textContent = `Welcome back, ${
             selectedAccount.owner.split(" ")[0]
         }`
@@ -164,7 +164,7 @@ btnLogin.addEventListener("click", function (e) {
 
 btnTransfer.addEventListener("click", function (e) {
     e.preventDefault()
-    const moneyAmount = Number(inputTransferAmount.value)
+    const moneyAmount = +inputTransferAmount.value
     const receiverAccount = accounts.find(
         (acc) => acc.username === inputTransferTo.value
     )
@@ -187,7 +187,7 @@ btnClose.addEventListener("click", function (e) {
     e.preventDefault()
     if (
         inputCloseUsername.value === selectedAccount.username &&
-        Number(inputClosePin.value) === selectedAccount.pin
+        +inputClosePin.value === selectedAccount.pin
     ) {
         const index = accounts.findIndex(
             (acc) => acc.username === selectedAccount.username
@@ -200,7 +200,7 @@ btnClose.addEventListener("click", function (e) {
 
 btnLoan.addEventListener("click", function (e) {
     e.preventDefault()
-    const loanAmount = Number(inputLoanAmount.value)
+    const loanAmount = +inputLoanAmount.value
     if (
         loanAmount > 0 &&
         selectedAccount.movements.some((mov) => mov >= loanAmount * 0.1)
