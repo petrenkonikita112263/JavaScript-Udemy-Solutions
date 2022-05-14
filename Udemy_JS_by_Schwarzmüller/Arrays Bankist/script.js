@@ -73,7 +73,7 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount")
 const inputCloseUsername = document.querySelector(".form__input--user")
 const inputClosePin = document.querySelector(".form__input--pin")
 
-const formatMovementDate = function (date) {
+const formatMovementDate = function (date, locale) {
     const calcDayPassed = (date1, date2) =>
         Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24))
     const daysPassed = calcDayPassed(new Date(), date)
@@ -87,10 +87,11 @@ const formatMovementDate = function (date) {
     if (daysPassed <= 7) {
         return `${daysPassed} days ago `
     } else {
-        const day = `${date.getDate()}`.padStart(2, 0)
-        const month = `${date.getMonth() + 1}`.padStart(2, 0)
-        const year = date.getFullYear()
-        return `${day}/${month}/${year}`
+        // const day = `${date.getDate()}`.padStart(2, 0)
+        // const month = `${date.getMonth() + 1}`.padStart(2, 0)
+        // const year = date.getFullYear()
+        // return `${day}/${month}/${year}`
+        return new Intl.DateTimeFormat(locale).format(date)
     }
 }
 
@@ -102,7 +103,7 @@ const displayMovements = function (acc, sort = false) {
     movs.forEach(function (mov, i) {
         const type = mov > 0 ? "deposit" : "withdrawal"
         const date = new Date(acc.movementsDates[i])
-        const displayDate = formatMovementDate(date)
+        const displayDate = formatMovementDate(date, acc.locale)
         const html = `
         <div class="movements__row">
           <div class="movements__type movements__type--${type}">${
@@ -176,6 +177,16 @@ selectedAccount = account1
 updateUI(selectedAccount)
 containerApp.style.opacity = 100
 
+const now = new Date()
+const options = {
+    hour: "numeric",
+    minute: "numeric",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    weekday: "long",
+}
+
 btnLogin.addEventListener("click", function (e) {
     e.preventDefault()
     selectedAccount = accounts.find(
@@ -187,13 +198,16 @@ btnLogin.addEventListener("click", function (e) {
             selectedAccount.owner.split(" ")[0]
         }`
         containerApp.style.opacity = 100
-        const now = new Date()
-        const day = `${now.getDate()}`.padStart(2, 0)
-        const month = `${now.getMonth() + 1}`.padStart(2, 0)
-        const year = now.getFullYear()
-        const hour = now.getHours()
-        const min = now.getMinutes()
-        labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`
+        labelDate.textContent = new Intl.DateTimeFormat(
+            selectedAccount.locale,
+            options
+        ).format(now)
+        // const day = `${now.getDate()}`.padStart(2, 0)
+        // const month = `${now.getMonth() + 1}`.padStart(2, 0)
+        // const year = now.getFullYear()
+        // const hour = now.getHours()
+        // const min = now.getMinutes()
+        // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`
         inputLoginUsername.value = inputLoginPin.value = ""
         inputLoginPin.blur()
         updateUI(selectedAccount)
