@@ -150,3 +150,11 @@ console.log(+future)
 const calcDayPassed = (date1, date2) =>
     Math.abs(date2 - date1) / (1000 * 60 * 60 * 24)
 console.log(calcDayPassed(new Date(2037, 3, 14), new Date(2037, 3, 24)))
+
+const anotherNum = 3884764.23
+const anotherOption = {
+    style: "currency",
+    unit: "mile-per-hour",
+    currency: "EUR",
+}
+console.log(new Intl.NumberFormat("en-Us", anotherOption).format(anotherNum))
