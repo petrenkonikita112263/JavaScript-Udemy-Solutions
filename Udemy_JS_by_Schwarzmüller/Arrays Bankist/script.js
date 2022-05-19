@@ -259,15 +259,17 @@ btnClose.addEventListener("click", function (e) {
 })
 
 btnLoan.addEventListener("click", function (e) {
-    e.preventDefault()
-    const loanAmount = Math.floor(inputLoanAmount.value)
+    e.preventDefault();
+    const amount = Math.floor(inputLoanAmount.value);
     if (
-        loanAmount > 0 &&
-        selectedAccount.movements.some((mov) => mov >= loanAmount * 0.1)
+        amount > 0 &&
+        selectedAccount.movements.some((mov) => mov >= amount * 0.1)
     ) {
-        selectedAccount.movements.push(loanAmount)
-        selectedAccount.movementsDates.push(new Date().toISOString)
-        updateUI(selectedAccount)
+        setTimeout(function () {
+            selectedAccount.movements.push(amount);
+            selectedAccount.movementsDates.push(new Date().toISOString());
+            updateUI(selectedAccount)
+        }, 2500)
     }
     inputLoanAmount.value = ""
 })
