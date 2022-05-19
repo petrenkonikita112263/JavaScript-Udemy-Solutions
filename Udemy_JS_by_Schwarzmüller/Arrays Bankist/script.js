@@ -175,9 +175,28 @@ const updateUI = function (acc) {
     calcDisplaySummary(acc)
 }
 
+
+const startLogOutTimer = function () {
+    const tick = function () {
+        const min = String(Math.trunc(time / 60)).padStart(2, 0)
+        const sec = String(time % 60).padStart(2, 0)
+        labelTimer.textContent = `${min}:${sec}`
+        if (time === 0) {
+            clearInterval(timer)
+            labelWelcome.textContent = "Log in to get started"
+            containerApp.style.opacity = 0
+        }
+        time--
+    }
+    let time = 300
+    tick()
+    const timer = setInterval(tick, 1000)
+    return timer
+}
+
 // Event handlers
 
-let selectedAccount
+let selectedAccount, timer
 
 // fake
 selectedAccount = account1
@@ -216,31 +235,34 @@ btnLogin.addEventListener("click", function (e) {
         // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`
         inputLoginUsername.value = inputLoginPin.value = ""
         inputLoginPin.blur()
+        if (timer) clearInterval(timer)
+        timer = startLogOutTimer()
         updateUI(selectedAccount)
     }
 })
 
 btnTransfer.addEventListener("click", function (e) {
     e.preventDefault()
-    const moneyAmount = +inputTransferAmount.value
+    const amountMoney = +inputTransferAmount.value
     const receiverAccount = accounts.find(
         (acc) => acc.username === inputTransferTo.value
     )
-    console.log(moneyAmount, receiverAccount)
+    inputTransferAmount.value = inputTransferTo.value = ""
+
     if (
-        moneyAmount > 0 &&
-        moneyAmount <= selectedAccount.balance &&
+        amountMoney > 0 &&
         receiverAccount &&
+        selectedAccount.balance >= amountMoney &&
         receiverAccount?.username !== selectedAccount.username
     ) {
-        console.log("Transfer is valid")
-        selectedAccount.movements.push(-moneyAmount)
-        receiverAccount.movements.push(moneyAmount)
-        selectedAccount.movementsDates.push(new Date().toISOString)
-        receiverAccount.movementsDates.push(new Date().toISOString)
+        selectedAccount.movements.push(-amountMoney)
+        receiverAccount.movements.push(amountMoney)
+        selectedAccount.movementsDates.push(new Date().toISOString())
+        receiverAccount.movementsDates.push(new Date().toISOString())
         updateUI(selectedAccount)
+        clearInterval(timer)
+        timer = startLogOutTimer()
     }
-    inputTransferAmount.value = inputTransferTo.value = ""
 })
 
 btnClose.addEventListener("click", function (e) {
@@ -269,6 +291,8 @@ btnLoan.addEventListener("click", function (e) {
             selectedAccount.movements.push(amount);
             selectedAccount.movementsDates.push(new Date().toISOString());
             updateUI(selectedAccount)
+            clearInterval(timer)
+            timer = startLogOutTimer()
         }, 2500)
     }
     inputLoanAmount.value = ""
