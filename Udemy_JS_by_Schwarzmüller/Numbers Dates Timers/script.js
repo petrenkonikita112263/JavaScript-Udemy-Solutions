@@ -1,4 +1,4 @@
-"use strict"
+﻿"use strict"
 
 ///////////////////////////////////////
 // Converting and Checking Numbers
@@ -151,6 +151,8 @@ const calcDayPassed = (date1, date2) =>
     Math.abs(date2 - date1) / (1000 * 60 * 60 * 24)
 console.log(calcDayPassed(new Date(2037, 3, 14), new Date(2037, 3, 24)))
 
+///////////////////////////////////////
+// Internationalizing Numbers (Intl)
 const anotherNum = 3884764.23
 const anotherOption = {
     style: "currency",
@@ -158,3 +160,20 @@ const anotherOption = {
     currency: "EUR",
 }
 console.log(new Intl.NumberFormat("en-Us", anotherOption).format(anotherNum))
+
+///////////////////////////////////////
+// Timers
+const ingredients = ["olives", "spinach"]
+const pizzaTimer = setTimeout(
+    (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+    3000,
+    ...ingredients
+)
+console.log("Waiting...")
+
+if (ingredients.includes("spinach")) clearTimeout(pizzaTimer)
+
+// setInterval
+setInterval(function () {
+    console.log(now)
+}, 1000)
