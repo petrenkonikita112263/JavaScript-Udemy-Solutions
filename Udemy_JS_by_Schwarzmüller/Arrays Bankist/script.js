@@ -77,7 +77,6 @@ const formatMovementDate = function (date, locale) {
     const calcDayPassed = (date1, date2) =>
         Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24))
     const daysPassed = calcDayPassed(new Date(), date)
-    console.log(daysPassed)
     if (daysPassed === 0) {
         return "Today"
     }
@@ -87,10 +86,6 @@ const formatMovementDate = function (date, locale) {
     if (daysPassed <= 7) {
         return `${daysPassed} days ago `
     } else {
-        // const day = `${date.getDate()}`.padStart(2, 0)
-        // const month = `${date.getMonth() + 1}`.padStart(2, 0)
-        // const year = date.getFullYear()
-        // return `${day}/${month}/${year}`
         return new Intl.DateTimeFormat(locale).format(date)
     }
 }
@@ -139,7 +134,6 @@ const calcDisplaySummary = function (acc) {
         .filter((mov) => mov > 0)
         .map((deposit) => (deposit * acc.interestRate) / 100)
         .filter((int, i, arr) => {
-            // console.log(arr);
             return int >= 1
         })
         .reduce((acc, int) => acc + int, 0)
@@ -161,7 +155,6 @@ createUsername(accounts)
 const calcDisplayBalance = function (acc) {
     acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0)
     labelBalance.textContent = formatCurrency(acc.balance, acc.locale, acc.currency)
-    console.log(labelBalance.textContent)
 }
 
 const updateUI = function (acc) {
@@ -194,15 +187,7 @@ const startLogOutTimer = function () {
     return timer
 }
 
-// Event handlers
-
 let selectedAccount, timer
-
-// fake
-selectedAccount = account1
-updateUI(selectedAccount)
-containerApp.style.opacity = 100
-
 const now = new Date()
 const options = {
     hour: "numeric",
@@ -213,12 +198,12 @@ const options = {
     weekday: "long",
 }
 
+// Event handlers
 btnLogin.addEventListener("click", function (e) {
     e.preventDefault()
     selectedAccount = accounts.find(
         (acc) => acc.username === inputLoginUsername.value
     )
-    console.log(selectedAccount)
     if (selectedAccount?.pin === +inputLoginPin.value) {
         labelWelcome.textContent = `Welcome back, ${selectedAccount.owner.split(" ")[0]
             }`
@@ -227,12 +212,6 @@ btnLogin.addEventListener("click", function (e) {
             selectedAccount.locale,
             options
         ).format(now)
-        // const day = `${now.getDate()}`.padStart(2, 0)
-        // const month = `${now.getMonth() + 1}`.padStart(2, 0)
-        // const year = now.getFullYear()
-        // const hour = now.getHours()
-        // const min = now.getMinutes()
-        // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`
         inputLoginUsername.value = inputLoginPin.value = ""
         inputLoginPin.blur()
         if (timer) clearInterval(timer)
