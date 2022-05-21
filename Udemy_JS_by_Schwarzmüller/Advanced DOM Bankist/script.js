@@ -29,3 +29,10 @@ document.addEventListener("keydown", function (e) {
         closeModal()
     }
 })
+
+const buttonScrollTo = document.querySelector(".btn--scroll-to")
+const firstSection = document.querySelector("#section--1")
+
+buttonScrollTo.addEventListener("click", function (e) {
+    firstSection.scrollIntoView({ behavior: "smooth" })
+})
