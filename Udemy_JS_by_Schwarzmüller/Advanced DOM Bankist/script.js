@@ -45,7 +45,7 @@ buttonScrollTo.addEventListener("click", function (e) {
 //document.querySelector(".nav__link").addEventListener(
 //    "click", function (e) {
 //        this.style.backgroundColor = randomColor()
-//        console.log('LINK', e.target, e.currentTarget)
+//        console.log("LINK", e.target, e.currentTarget)
 //        console.log(e.currentTarget === this)
 //    }
 //)
@@ -53,14 +53,14 @@ buttonScrollTo.addEventListener("click", function (e) {
 //document.querySelector(".nav__links").addEventListener(
 //    "click", function (e) {
 //        this.style.backgroundColor = randomColor()
-//        console.log('CONTAINER', e.target, e.currentTarget)
+//        console.log("CONTAINER", e.target, e.currentTarget)
 //    }
 //)
 
 //document.querySelector(".nav").addEventListener(
 //    "click", function (e) {
 //        this.style.backgroundColor = randomColor()
-//        console.log('NAV', e.target, e.currentTarget)
+//        console.log("NAV", e.target, e.currentTarget)
 //    }
 //)
 
@@ -73,3 +73,18 @@ document.querySelector(".nav__link").addEventListener("click", function (e) {
     }
 })
 
+//tab component
+const tabs = document.querySelectorAll(".operations__tab")
+const tabsContainer = document.querySelector(".operations__tab-container")
+const tabsContent = document.querySelectorAll(".operations__content")
+
+tabsContainer.addEventListener("click", function (e) {
+    const clickedTab = e.target.closest(".operations__tab")
+    if (!clickedTab) return
+    tabs.forEach(tab => tab.classList.remove("operations__tab--active"))
+    tabsContent.forEach(content => content.classList.remove("operations__content--active"))
+    clickedTab.classList.add("operations__tab--active")
+    document
+        .querySelector(`.operations__content--${clickedTab.dataset.tab}`)
+        .classList.add("operations__content--active")
+})
