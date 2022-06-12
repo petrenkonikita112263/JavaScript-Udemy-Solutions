@@ -13,6 +13,47 @@ const inputElevation = document.querySelector(".form__input--elevation")
 
 let map, mapEvent
 
+class Workout {
+    date = new Date()
+    id = (Date.now() + "").slice(-10)
+
+    constructor(coordinates, distance, duration) {
+        this.coordinates = coordinates
+        this.distance = distance
+        this.duration = duration
+    }
+}
+
+class Running extends Workout {
+    constructor(coordinates, distance, duration, cadence) {
+        super(coordinates, distance, duration)
+        this.cadence = cadence
+        this.calculatePace()
+    }
+
+    calculatePace() {
+        this.pace = this.duration / this.distance
+        return this.pace
+    }
+}
+
+class Cycling extends Workout {
+    constructor(coordinates, distance, duration, elevationGain) {
+        super(coordinates, distance, duration)
+        this.elevationGain = elevationGain
+        this.calculateSpeed()
+    }
+
+    calculateSpeed() {
+        this.speed = this.distance / (this.duration / 60)
+        return this.speed
+    }
+}
+
+const testRunning = new Running([39, -12], 5.2, 24, 178)
+const testCycling = new Cycling([39, -12], 27, 95, 523)
+console.log(testRunning, testCycling)
+
 class App {
     #map
     #mapEvent
