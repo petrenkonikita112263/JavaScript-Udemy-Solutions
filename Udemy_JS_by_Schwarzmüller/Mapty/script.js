@@ -62,10 +62,6 @@ class Cycling extends Workout {
     }
 }
 
-const testRunning = new Running([39, -12], 5.2, 24, 178)
-const testCycling = new Cycling([39, -12], 27, 95, 523)
-console.log(testRunning, testCycling)
-
 class App {
     #map
     #mapEvent
