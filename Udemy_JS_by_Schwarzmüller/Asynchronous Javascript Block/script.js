@@ -23,9 +23,11 @@ const getCountryData = function (countryName) {
             <p class="country__row"><span>👫</span>${(
                 +data.population / 1_000_000
             ).toFixed(1)} people</p>
-            <p class="country__row"><span>🗺</span>${data.area} km2</p>
+            <p class="country__row"><span>🗺</span>${
+                data.area
+            } km<sup>2</sup> </p>
             <p class="country__row"><span>🗣️</span>${
-                Object.keys(data.languages)[0]
+                Object.values(data.languages)[0]
             }</p>
             <p class="country__row"><span>💰</span>${
                 Object.keys(data.currencies)[0]
