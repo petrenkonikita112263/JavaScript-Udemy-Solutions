@@ -43,17 +43,22 @@ const getCountryDataAndNeighbour = function (countryName) {
         const [...neighboursCodes] = data.borders
         neighboursCodes.forEach((codeName) => {
             if (!codeName) return
-            const request2 = new XMLHttpRequest()
-            request2.open(
-                "GET",
-                `https://restcountries.com/v3.1/alpha/${codeName}`
-            )
-            request2.send()
-            request2.addEventListener("load", function () {
-                const [data2] = JSON.parse(this.responseText)
-                renderCountry(data2, "neighbour")
+            const path = `https://restcountries.com/v3.1/alpha/${codeName}`
+            console.log(path)
+            fetch(path, {
+                method: "GET",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json",
+                },
             })
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data)
+                    renderCountry(data[0], "neighbour")
+                })
         })
     })
 }
+
 getCountryDataAndNeighbour("Ukraine")
