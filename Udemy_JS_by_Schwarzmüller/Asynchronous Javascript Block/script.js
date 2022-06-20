@@ -30,23 +30,17 @@ const renderCountry = function (data, className = "") {
     countriesContainer.style.opacity = 1
 }
 
-const getJSON = function (url, errorMsg = "Something went wrong") {
-    return fetch(url).then((response) => {
-        if (!response.ok) throw new Error(`${errorMsg} (${response.status})`)
-        return response.json()
-    })
-}
-
-const getCountryDataAndNeighbour = function (
-    countryName,
-    errorMsg = "Something went wrong"
-) {
-    getJSON(
-        `https://restcountries.com/v3.1/name/${countryName}?fullText=true`,
-        "Country not found"
-    ).then((data) => {
-        renderCountry(data[0])
-        const [...neighboursCodes] = data[0].borders
+const getCountryDataAndNeighbour = function (countryName) {
+    const request = new XMLHttpRequest()
+    request.open(
+        "GET",
+        `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
+    )
+    request.send()
+    request.addEventListener("load", function () {
+        const [data] = JSON.parse(this.responseText)
+        renderCountry(data)
+        const [...neighboursCodes] = data.borders
         neighboursCodes.forEach((codeName) => {
             if (!codeName) return
             const request2 = new XMLHttpRequest()
