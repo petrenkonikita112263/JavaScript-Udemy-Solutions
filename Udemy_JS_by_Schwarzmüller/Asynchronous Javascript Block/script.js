@@ -30,6 +30,11 @@ const renderCountry = function (data, className = "") {
     countriesContainer.style.opacity = 1
 }
 
+const renderError = function (message) {
+    countriesContainer.insertAdjacentText("beforeend", message)
+    countriesContainer.style.opacity = 1
+}
+
 const getJSONResponse = function (url, errorMessage = "Smth went wrong") {
     return fetch(url, {
         method: "GET",
@@ -48,22 +53,31 @@ const getCountryDataAndNeighbour = function (countryName) {
     getJSONResponse(
         `https://restcountries.com/v3.1/name/${countryName}?fullText=true`,
         "There's no country with that name"
-    ).then((data) => {
-        renderCountry(data[0])
-        const [...neighboursCodes] = data[0].borders
-        neighboursCodes.forEach((codeName) => {
-            if (!codeName) return
-            const path = `https://restcountries.com/v3.1/alpha/${codeName}`
-            console.log(path)
-            getJSONResponse(
-                `https://restcountries.com/v3.1/alpha/${codeName}`,
-                "There's no country with this code"
-            ).then((data) => {
-                console.log(data)
-                renderCountry(data[0], "neighbour")
+    )
+        .then((data) => {
+            renderCountry(data[0])
+            const [...neighboursCodes] = data[0].borders
+            neighboursCodes.forEach((codeName) => {
+                if (!codeName) return
+                const path = `https://restcountries.com/v3.1/alpha/${codeName}`
+                console.log(path)
+                getJSONResponse(
+                    `https://restcountries.com/v3.1/alpha/${codeName}`,
+                    "There's no country with this code"
+                ).then((data) => {
+                    console.log(data)
+                    renderCountry(data[0], "neighbour")
+                })
             })
         })
-    })
+        .catch((error) =>
+            renderError(
+                `Something went wrong 💥💥💥 ${error.message}. Try again!`
+            )
+        )
+        .finally(() => {
+            countriesContainer.style.opacity = 1
+        })
 }
 
 getCountryDataAndNeighbour("Ukraine")
