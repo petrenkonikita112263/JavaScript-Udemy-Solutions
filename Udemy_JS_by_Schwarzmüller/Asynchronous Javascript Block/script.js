@@ -31,34 +31,35 @@ const renderCountry = function (data, className = "") {
 }
 
 const getCountryDataAndNeighbour = function (countryName) {
-    const request = new XMLHttpRequest()
-    request.open(
-        "GET",
-        `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
-    )
-    request.send()
-    request.addEventListener("load", function () {
-        const [data] = JSON.parse(this.responseText)
-        renderCountry(data)
-        const [...neighboursCodes] = data.borders
-        neighboursCodes.forEach((codeName) => {
-            if (!codeName) return
-            const path = `https://restcountries.com/v3.1/alpha/${codeName}`
-            console.log(path)
-            fetch(path, {
-                method: "GET",
-                mode: "cors",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    console.log(data)
-                    renderCountry(data[0], "neighbour")
-                })
-        })
+    fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+            "Content-Type": "application/json",
+        },
     })
+        .then((response) => response.json())
+        .then((data) => {
+            renderCountry(data[0])
+            const [...neighboursCodes] = data[0].borders
+            neighboursCodes.forEach((codeName) => {
+                if (!codeName) return
+                const path = `https://restcountries.com/v3.1/alpha/${codeName}`
+                console.log(path)
+                fetch(path, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data)
+                        renderCountry(data[0], "neighbour")
+                    })
+            })
+        })
 }
 
 getCountryDataAndNeighbour("Ukraine")
