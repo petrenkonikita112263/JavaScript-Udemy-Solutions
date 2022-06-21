@@ -30,36 +30,40 @@ const renderCountry = function (data, className = "") {
     countriesContainer.style.opacity = 1
 }
 
-const getCountryDataAndNeighbour = function (countryName) {
-    fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`, {
+const getJSONResponse = function (url, errorMessage = "Smth went wrong") {
+    return fetch(url, {
         method: "GET",
         mode: "cors",
         headers: {
             "Content-Type": "application/json",
         },
+    }).then((response) => {
+        if (!response.ok)
+            throw new Error(`💥💥💥 ${errorMessage} (${response.status})`)
+        return response.json()
     })
-        .then((response) => response.json())
-        .then((data) => {
-            renderCountry(data[0])
-            const [...neighboursCodes] = data[0].borders
-            neighboursCodes.forEach((codeName) => {
-                if (!codeName) return
-                const path = `https://restcountries.com/v3.1/alpha/${codeName}`
-                console.log(path)
-                fetch(path, {
-                    method: "GET",
-                    mode: "cors",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data)
-                        renderCountry(data[0], "neighbour")
-                    })
+}
+
+const getCountryDataAndNeighbour = function (countryName) {
+    getJSONResponse(
+        `https://restcountries.com/v3.1/name/${countryName}?fullText=true`,
+        "There's no country with that name"
+    ).then((data) => {
+        renderCountry(data[0])
+        const [...neighboursCodes] = data[0].borders
+        neighboursCodes.forEach((codeName) => {
+            if (!codeName) return
+            const path = `https://restcountries.com/v3.1/alpha/${codeName}`
+            console.log(path)
+            getJSONResponse(
+                `https://restcountries.com/v3.1/alpha/${codeName}`,
+                "There's no country with this code"
+            ).then((data) => {
+                console.log(data)
+                renderCountry(data[0], "neighbour")
             })
         })
+    })
 }
 
 getCountryDataAndNeighbour("Ukraine")
