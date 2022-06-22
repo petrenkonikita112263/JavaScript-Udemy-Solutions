@@ -26,6 +26,8 @@ TEST COORDINATES 2: -33.933, 18.474
 
 GOOD LUCK 😀
 */
+const countriesContainer = document.querySelector(".countries")
+
 const renderCountry = function (data, className = "") {
     const htmlContent = `
     <article class="country ${className}">
@@ -62,15 +64,17 @@ const whereAmI = function (lat, lng) {
         .then((data) => {
             console.log(data)
             console.log(`You are in ${data.city}, ${data.country}`)
-            return fetch(`https://restcountries.com/v3.1/name/${data.country}`)
+            return fetch(
+                `https://restcountries.com/v3.1/name/${data.country}?fullText=true`
+            )
         })
         .then((response) => {
             if (!response.ok)
-                throw new Error(`Country not found (${ressponse.status})`)
+                throw new Error(`Country not found (${response.status})`)
             return response.json()
         })
         .then((data) => renderCountry(data[0]))
-        .catch((err) => console.error(`${err.message} 💥`))
+        .catch((error) => console.error(`${error.message} 💥`))
 }
 
 whereAmI(52.508, 13.381)
