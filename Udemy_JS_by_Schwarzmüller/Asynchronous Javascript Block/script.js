@@ -60,12 +60,10 @@ const getCountryDataAndNeighbour = function (countryName) {
             neighboursCodes.forEach((codeName) => {
                 if (!codeName) return
                 const path = `https://restcountries.com/v3.1/alpha/${codeName}`
-                console.log(path)
                 getJSONResponse(
                     `https://restcountries.com/v3.1/alpha/${codeName}`,
                     "There's no country with this code"
                 ).then((data) => {
-                    console.log(data)
                     renderCountry(data[0], "neighbour")
                 })
             })
