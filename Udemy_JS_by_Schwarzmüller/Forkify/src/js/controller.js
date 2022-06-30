@@ -13,3 +13,29 @@ const timeout = function (s) {
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////
+const displayRecipe = async function () {
+    try {
+        const response = await fetch(
+            "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886"
+        )
+        const jsonData = await response.json()
+        if (!response.ok)
+            throw new Error(`${jsonData.message} (${jsonData.status})`)
+        console.log(response, jsonData)
+        let { recipe } = jsonData.data.recipe
+        recipe = {
+            id: recipe.id,
+            title: recipe.title,
+            publisher: recipe.publisher,
+            sourceUrl: recipe.source_url,
+            image: recipe.image_url,
+            servings: recipe.servings,
+            cooking_time: recipe.cooking_time,
+            ingredients: recipe.ingredients,
+        }
+        console.log(recipe)
+    } catch (error) {
+        console.log(error)
+    }
+}
+displayRecipe()
