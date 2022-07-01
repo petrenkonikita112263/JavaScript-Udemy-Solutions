@@ -30,9 +30,11 @@ const renderSpinner = function (parentElement) {
 
 const displayRecipe = async function () {
     try {
+        const id = window.location.hash.slice(1)
+        if (!id) return
         renderSpinner(recipeContainer)
         const response = await fetch(
-            "https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886"
+            `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
         )
         const jsonData = await response.json()
         if (!response.ok)
@@ -155,4 +157,10 @@ const displayRecipe = async function () {
         console.log(error)
     }
 }
+
+// prettier-ignore
 displayRecipe()
+
+["hashchange", "load"].forEach((elementCommand) => {
+    window.addEventListener(elementCommand, displayRecipe)
+})
