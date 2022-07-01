@@ -22,7 +22,7 @@ const displayRecipe = async function () {
         if (!response.ok)
             throw new Error(`${jsonData.message} (${jsonData.status})`)
         console.log(response, jsonData)
-        let { recipe } = jsonData.data.recipe
+        let { recipe } = jsonData.data
         recipe = {
             id: recipe.id,
             title: recipe.title,
