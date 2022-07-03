@@ -14,7 +14,10 @@ const timeout = function (s) {
 export const getJsonResponseData = async function (urlLink) {
     try {
         // prettier-ignore
-        const response = await Promise.race([fetch(urlLink), timeout(TIMEOUT_SECONDS)])
+        const response = await Promise.race([fetch(urlLink, {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+        }), TIMEOUT_SECONDS])
         const jsonData = await response.json()
         if (!response.ok)
             throw new Error(`${jsonData.message} (${jsonData.status})`)
