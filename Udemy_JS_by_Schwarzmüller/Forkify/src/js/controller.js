@@ -23,9 +23,8 @@ const controllerRecipe = async function () {
     }
 }
 
-// prettier-ignore
-controllerRecipe()
+const init = function () {
+    recipeView.addHandlerRender(controllerRecipe)
+}
 
-["hashchange", "load"].forEach((elementCommand) => {
-    window.addEventListener(elementCommand, controllerRecipe)
-})
+init()

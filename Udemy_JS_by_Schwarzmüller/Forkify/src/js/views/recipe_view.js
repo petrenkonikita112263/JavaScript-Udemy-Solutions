@@ -130,6 +130,13 @@ class RecipeView {
         this.#parentElement.innerHTML = ""
         this.#parentElement.insertAdjacentHTML("afterbegin", markupContent)
     }
+
+    addHandlerRender(handler) {
+        // prettier-ignore
+        ["hashchange", "load"].forEach((elementCommand) => {
+            window.addEventListener(elementCommand, handler)
+        })
+    }
 }
 
 export default new RecipeView()
