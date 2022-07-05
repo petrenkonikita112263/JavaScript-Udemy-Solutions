@@ -16,3 +16,5 @@
 *.vsix
 
 node_modules/
+package-lock.json
+.parcel-cache
