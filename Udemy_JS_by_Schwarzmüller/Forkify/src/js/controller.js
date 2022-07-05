@@ -19,7 +19,7 @@ const controllerRecipe = async function () {
         const { recipe } = model.state.recipe
         recipeView.render(model.state.recipe)
     } catch (error) {
-        console.log(error)
+        recipeView.renderError(`${error} 💥💥💥💥💥`)
     }
 }
 

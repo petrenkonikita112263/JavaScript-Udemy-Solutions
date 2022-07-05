@@ -127,7 +127,7 @@ class RecipeView {
       <use href="${icons}#icon-loader"></use>
     </svg>
     </div>`
-        this.#parentElement.innerHTML = ""
+        this.#clear()
         this.#parentElement.insertAdjacentHTML("afterbegin", markupContent)
     }
 
@@ -136,6 +136,36 @@ class RecipeView {
         ["hashchange", "load"].forEach((elementCommand) => {
             window.addEventListener(elementCommand, handler)
         })
+    }
+
+    renderError(message) {
+        const htmlErrorContent = `
+      <div class="error">
+            <div>
+              <svg>
+                <use href="${icons}#icon-alert-triangle"></use>
+              </svg>
+            </div>
+            <p>${message}</p>
+      </div>
+      `
+        this.#clear()
+        this.#parentElement.insertAdjacentHTML("afterbegin", htmlErrorContent)
+    }
+
+    renderSuccess(message) {
+        const htmlSuccessContent = `
+    <div class="message">
+          <div>
+            <svg>
+              <use href="${icons}#icon-smile"></use>
+            </svg>
+          </div>
+          <p>${message}</p>
+    </div>
+    `
+        this.#clear()
+        this.#parentElement.insertAdjacentHTML("afterbegin", htmlSuccessContent)
     }
 }
 
