@@ -1,5 +1,6 @@
 import * as model from "./model.js"
 import recipeView from "./views/recipe_view.js"
+import searchView from "./views/search_view.js"
 
 import "core-js/stable"
 import "regenerator-runtime"
@@ -23,8 +24,19 @@ const controllerRecipe = async function () {
     }
 }
 
+const controllerSearchResults = async function () {
+    try {
+        const query = searchView.getQuery()
+        if (!query) return
+        await model.loadSearchResults(query)
+    } catch (error) {
+        throw error
+    }
+}
+
 const init = function () {
     recipeView.addHandlerRender(controllerRecipe)
+    searchView.addHandlerSearch(controllerSearchResults)
 }
 
 init()
