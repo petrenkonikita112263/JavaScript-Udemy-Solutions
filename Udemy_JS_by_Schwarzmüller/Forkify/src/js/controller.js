@@ -7,8 +7,6 @@ import paginationView from "./views/pagination_view.js"
 import "core-js/stable"
 import "regenerator-runtime"
 
-const recipeContainer = document.querySelector(".recipe")
-
 // https://forkify-api.herokuapp.com/v2
 
 ///////////////////////////////////////
@@ -19,7 +17,6 @@ const controllerRecipe = async function () {
         if (!id) return
         recipeView.renderSpinner()
         await model.loadRecipe(id)
-        const { recipe } = model.state.recipe
         recipeView.render(model.state.recipe)
     } catch (error) {
         recipeView.renderError(`${error} 💥💥💥💥💥`)
@@ -32,6 +29,7 @@ const controllerSearchResults = async function () {
         if (!query) return
         await model.loadSearchResults(query)
         resultsView.render(model.getSearchResultsPage())
+        paginationView.render(model.state.search)
     } catch (error) {
         throw error
     }
@@ -42,8 +40,14 @@ const controllerPagination = function (goToPage) {
     paginationView.render(model.state.search)
 }
 
+const controllerServings = function (newServings) {
+    model.updateServings(newServings)
+    recipeView.update(model.state.recipe)
+}
+
 const init = function () {
     recipeView.addHandlerRender(controllerRecipe)
+    recipeView.addHandlerUpdateServings(controllerServings)
     searchView.addHandlerSearch(controllerSearchResults)
     paginationView.addHandlerRender(controllerPagination)
 }
