@@ -61,4 +61,29 @@ export default class View {
             markupMessageContent
         )
     }
+
+    update(data) {
+        this._data = data
+        const newMarkup = this._generateMarkup()
+        const newDOM = document
+            .createRange()
+            .createContextualFragment(newMarkup)
+        const newElements = Array.from(newDOM.querySelectorAll("*"))
+        const currentElement = Array.from(
+            this._parentElement.querySelectorAll("*")
+        )
+        newElements.forEach((newEl, i) => {
+            const element = currentElement[i]
+            if (
+                !newEl.isEqualNode(element) &&
+                newEl.firstChild?.nodeValue.trim() !== ""
+            ) {
+                element.textContent = newEl.textContent
+            }
+            if (!newEl.isEqualNode(element))
+                Array.from(newEl.attributes).forEach((attr) =>
+                    element.setAttribute(attr.name, attr.value)
+                )
+        })
+    }
 }
