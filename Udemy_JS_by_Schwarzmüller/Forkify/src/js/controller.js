@@ -45,9 +45,16 @@ const controllerServings = function (newServings) {
     recipeView.update(model.state.recipe)
 }
 
+const controllerAddBookmark = function () {
+    if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe)
+    else model.removeBookmark(model.state.recipe.id)
+    recipeView.update(model.state.recipe)
+}
+
 const init = function () {
     recipeView.addHandlerRender(controllerRecipe)
     recipeView.addHandlerUpdateServings(controllerServings)
+    recipeView.addHandlerAddBookmark(controllerAddBookmark)
     searchView.addHandlerSearch(controllerSearchResults)
     paginationView.addHandlerRender(controllerPagination)
 }
