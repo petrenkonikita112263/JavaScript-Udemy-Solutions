@@ -10,6 +10,7 @@ export const state = {
         page: 1,
         resultsPerPage: 10,
     },
+    bookmarks: [],
 }
 
 export const loadRecipe = async function (id) {
@@ -64,4 +65,9 @@ export const updateServings = function (newServings) {
             (ingredient.quantity * newServings) / state.recipe.servings
     })
     state.recipe.servings = newServings
+}
+
+export const addBookmark = function (recipe) {
+    state.bookmarks.push(recipe)
+    if (recipe.id === state.recipe.id) state.recipe.bookmarked = true
 }
