@@ -45,6 +45,7 @@ export const loadSearchResults = async function (query) {
                 ...(recipe.key && { key: recipe.key }),
             }
         })
+        state.search.page = 1
     } catch (error) {
         throw error
     }
