@@ -11,6 +11,10 @@ class BookmarkView extends View {
             .map((result) => previewView.render(result, false))
             .join("")
     }
+
+    addHandlerRender(handler) {
+        window.addEventListener("load", handler)
+    }
 }
 
 export default new BookmarkView()
