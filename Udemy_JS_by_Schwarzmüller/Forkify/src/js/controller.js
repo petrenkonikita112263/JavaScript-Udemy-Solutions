@@ -5,6 +5,7 @@ import resultsView from "./views/results_view.js"
 import paginationView from "./views/pagination_view.js"
 import bookmarkView from "./views/bookmark_view.js"
 import addRecipeView from "./views/add_recipe_view.js"
+import { MODAL_CLOSE_SEC } from "./config.js"
 
 import "core-js/stable"
 import "regenerator-runtime"
@@ -60,7 +61,20 @@ const controllerBookmarks = function () {
 }
 
 const controllerAddRecipe = function (newRecipe) {
-    console.log(newRecipe)
+    try {
+        addRecipeView.renderSpinner()
+        model.uploadRecipe(newRecipe)
+        console.log(model.state.recipe)
+        recipeView.render(model.state.recipe)
+        addRecipeView.renderMessage()
+        bookmarkView.render(model.state.bookmarks)
+        window.history.pushState(null, "", `#${model.state.recipe.id}`)
+        setTimeout(function () {
+            addRecipeView.toggleWindow()
+        }, MODAL_CLOSE_SEC * 1000)
+    } catch (error) {
+        addRecipeView.renderError(error.message)
+    }
 }
 
 const init = function () {
