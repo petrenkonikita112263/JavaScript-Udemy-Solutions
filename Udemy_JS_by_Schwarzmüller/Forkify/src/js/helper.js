@@ -26,3 +26,24 @@ export const getJsonResponseData = async function (urlLink) {
         throw error
     }
 }
+
+export const AJAX = async function (url, uploadData = undefined) {
+    try {
+        const fetchPro = uploadData
+            ? fetch(url, {
+                  method: "POST",
+                  headers: {
+                      "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(uploadData),
+              })
+            : fetch(url)
+        const response = await Promise.race([fetchPro, timeout(3)])
+        const data = await response.json()
+        if (!response.ok)
+            throw new Error(`${data.message} (${response.status})`)
+        return data
+    } catch (error) {
+        throw error
+    }
+}
